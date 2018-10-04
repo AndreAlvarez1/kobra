@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">!Kobra</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+        <% if seller_signed_in? %>
+        <li class="nav-item active">
+          <p>Bienvenido: <%= current_seller.email %> </p>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Editar Usuario', edit_seller_registration_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Cerrar Sesión', destroy_seller_session_path, method: :delete, class: 'nav-link' %>
+        </li>
+        <% else %>
+            <li class="nav-item">
+              <%= link_to 'Iniciar sesión', new_seller_session_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Registrarse',  new_seller_registration_path, class: 'nav-link'%>
+            </li>
+        <% end %>
+    </ul>
+  </div>
+</nav>
