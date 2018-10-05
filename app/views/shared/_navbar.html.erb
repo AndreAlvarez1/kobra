@@ -12,6 +12,12 @@
           <p>Bienvenido: <%= current_seller.email %> </p>
         </li>
         <li class="nav-item active">
+          <%= link_to 'Productos', products_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Clientes', buyers_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item active">
           <%= link_to 'Editar Usuario', edit_seller_registration_path, class: 'nav-link' %>
         </li>
         <li class="nav-item active">

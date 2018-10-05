@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :buyers
   resources :products
   devise_for :sellers, controllers: {
     registrations: 'sellers/registrations'
