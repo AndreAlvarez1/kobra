@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_02_233457) do
+ActiveRecord::Schema.define(version: 2018_10_04_231920) do
+
+  create_table "products", force: :cascade do |t|
+    t.integer "seller_id"
+    t.string "name"
+    t.text "detail"
+    t.integer "price"
+    t.integer "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seller_id"], name: "index_products_on_seller_id"
+  end
 
   create_table "sellers", force: :cascade do |t|
     t.string "email", default: "", null: false
