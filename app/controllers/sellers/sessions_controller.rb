@@ -11,7 +11,6 @@ class Sellers::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
    def create
      super
-     redirect_to pages_dashboard_path
    end
 
   # DELETE /resource/sign_out
