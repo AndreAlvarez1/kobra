@@ -22,6 +22,13 @@ class BuyersController < ApplicationController
   def edit
   end
 
+  def preorders
+    @seller = current_seller
+    @buyers = @seller.buyers
+  end
+
+  
+
   # POST /buyers
   # POST /buyers.json
   def create

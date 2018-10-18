@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_002339) do
+ActiveRecord::Schema.define(version: 2018_10_09_005041) do
 
   create_table "buyers", force: :cascade do |t|
     t.integer "seller_id"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2018_10_05_002339) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["seller_id"], name: "index_buyers_on_seller_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "buyer_id"
+    t.integer "product_id"
+    t.boolean "status", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_orders_on_buyer_id"
+    t.index ["product_id"], name: "index_orders_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
