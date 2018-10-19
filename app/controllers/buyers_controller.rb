@@ -11,6 +11,7 @@ class BuyersController < ApplicationController
   # GET /buyers/1
   # GET /buyers/1.json
   def show
+
   end
 
   # GET /buyers/new
@@ -25,9 +26,12 @@ class BuyersController < ApplicationController
   def preorders
     @seller = current_seller
     @buyers = @seller.buyers
+    @products = @seller.products
   end
 
-  
+
+
+
 
   # POST /buyers
   # POST /buyers.json

@@ -1,28 +1,26 @@
-<h1>Venta</h1>
-<p>Escoge la persona a la que quieres sumarle una venta</p>
+<h1>Venta Productos o servicios</h1>
+<p>Escoge el o los productos que quieres agregar a la canasta</p>
 <table>
   <thead>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Photo</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th>Detail</th>
-      <th colspan="3"></th>
+      <th>Producto</th>
+      <th>Detalle</th>
+      <th>Precio</th>
+      <th>Categoría</th>
+      <th colspan="1"></th>
+
     </tr>
   </thead>
 
   <tbody>
-    <% @buyers.each do |buyer| %>
+    <% @products.each do |product| %>
       <tr>
-        <td><%= buyer.first_name %></td>
-        <td><%= buyer.last_name %></td>
-        <td><%= buyer.photo %></td>
-        <td><%= buyer.phone %></td>
-        <td><%= buyer.email %></td>
-        <td><%= buyer.detail %></td>
-        <td><%= link_to 'Vender', buyer_orders_path(buyer), method: :post %></td>
+        <td><%= product.name %></td>
+        <td><%= product.detail %></td>
+        <td><%= product.price %></td>
+        <td><%= product.category %></td>
+        <td><%= link_to 'AGREGAR', pages_index_path %></td>
+
       </tr>
     <% end %>
   </tbody>

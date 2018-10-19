@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
-  get 'buyers/preorders'
+  get 'orders/index'
 
   resources :buyers do
-    resources :orders, only: :create
+    resources :orders, only: [:create]
+    resources :products, only: [:index]
+
   end
-  
+
   resources :products
   devise_for :sellers, controllers: {
     registrations: 'sellers/registrations'
   }
-  root 'pages#index'
+  root to: 'pages#index'
   get 'pages/home'
   get 'pages/index'
   get 'pages/dashboard'

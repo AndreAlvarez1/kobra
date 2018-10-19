@@ -11,7 +11,7 @@
       <th>Phone</th>
       <th>Email</th>
       <th>Detail</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -24,6 +24,7 @@
         <td><%= buyer.phone %></td>
         <td><%= buyer.email %></td>
         <td><%= buyer.detail %></td>
+        <td><%= link_to 'VENDER',buyer_products_path(buyer) %></td>
         <td><%= link_to 'Show', buyer %></td>
         <td><%= link_to 'Edit', edit_buyer_path(buyer) %></td>
         <td><%= link_to 'Destroy', buyer, method: :delete, data: { confirm: 'Are you sure?' } %></td>

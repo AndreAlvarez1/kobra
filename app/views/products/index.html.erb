@@ -20,6 +20,9 @@
         <td><%= product.detail %></td>
         <td><%= product.price %></td>
         <td><%= product.category %></td>
+        <%if params[:buyer_id].present?%>
+        <td><%= link_to 'vender', product %></td>
+        <%end  %>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

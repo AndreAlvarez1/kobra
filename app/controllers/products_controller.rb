@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   def index
     @seller = current_seller
     @products = @seller.products
+    
   end
 
   # GET /products/1
