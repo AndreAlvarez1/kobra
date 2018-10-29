@@ -2,7 +2,7 @@
 
 <h1>Products</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -20,9 +20,9 @@
         <td><%= product.detail %></td>
         <td><%= product.price %></td>
         <td><%= product.category %></td>
-        <%if params[:buyer_id].present?%>
-        <td><%= link_to 'vender', product %></td>
-        <%end  %>
+        <% if params[:buyer_id].present?%>
+        <td><%= link_to 'Agregar', buyer_orders_path(product: product.id), method: :post, class:"btn btn-primary" %></td>
+        <% end %>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -34,3 +34,20 @@
 <br>
 
 <%= link_to 'New Product', new_product_path %>
+
+
+<% if params[:buyer_id].present?%>
+<h1>Ver Canasta</h1>
+<p><%= @cantidad %></p>
+
+<table class="table">
+  <% @orders.each do |order| %>
+  <tr>
+  <td><%= order.buyer.first_name + ' ' + order.buyer.last_name %></td>
+  <td><%= order.product.name%></td>
+  <td><%= order.product.price%></td>
+  <td><%= order.status%></td>
+  <tr>
+  <% end %>
+  </table>
+<% end %>

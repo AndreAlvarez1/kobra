@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
   <a class="navbar-brand" href="#">!Kobra</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,7 +9,7 @@
     <ul class="navbar-nav mr-auto">
         <% if seller_signed_in? %>
         <li class="nav-item active">
-          <p>Bienvenido: <%= current_seller.email %> </p>
+          <p>Bienvenido: <%= current_seller.first_name %> </p>
         </li>
         <li class="nav-item active">
           <%= link_to 'Productos', products_path, class: 'nav-link' %>
@@ -17,8 +17,9 @@
         <li class="nav-item active">
           <%= link_to 'Clientes', buyers_path, class: 'nav-link' %>
         </li>
-      
-
+        <li class="nav-item active">
+          <%= link_to 'Orders', orders_index_path, class: 'nav-link' %>
+        </li>
         <li class="nav-item active">
           <%= link_to 'Editar Usuario', edit_seller_registration_path, class: 'nav-link' %>
         </li>

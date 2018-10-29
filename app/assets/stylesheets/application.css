@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+
+body{
+  margin: 0;
+}
+
+.bg-black{
+  background-color: black;
+  color: white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #F5F5F5;
+}
+
+.btn a:visited {
+color:white;
+}
+
+.btn-lg{
+  border-radius: 0;
+}

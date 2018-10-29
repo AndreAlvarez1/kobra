@@ -6,7 +6,8 @@ class ProductsController < ApplicationController
   def index
     @seller = current_seller
     @products = @seller.products
-    
+    @orders = Order.where(buyer_id: params[:buyer_id])
+    @cantidad = @orders.length
   end
 
   # GET /products/1

@@ -1,4 +1,5 @@
 class BuyersController < ApplicationController
+  before_action :authenticate_seller!
   before_action :set_buyer, only: [:show, :edit, :update, :destroy]
 
   # GET /buyers
@@ -11,7 +12,6 @@ class BuyersController < ApplicationController
   # GET /buyers/1
   # GET /buyers/1.json
   def show
-
   end
 
   # GET /buyers/new
