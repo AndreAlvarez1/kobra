@@ -1,5 +1,9 @@
 class OrdersController < ApplicationController
 
+  def index
+    @seller = current_seller
+    @orders = Order.all
+  end
 
   def new
   end
@@ -10,13 +14,8 @@ class OrdersController < ApplicationController
     @order = Order.create(product: @product, buyer: @buyer)
     @order.save
     redirect_to buyer_products_path(params[:buyer_id])
-
   end
 
-  def index
-    @orders = Order.all
-
-  end
 
 
 end

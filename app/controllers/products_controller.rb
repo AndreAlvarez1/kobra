@@ -8,6 +8,12 @@ class ProductsController < ApplicationController
     @products = @seller.products
     @orders = Order.where(buyer_id: params[:buyer_id])
     @cantidad = @orders.length
+    @total = 0
+
+    @orders.each do |order|
+      @total += order.product.price
+    end
+
   end
 
   # GET /products/1

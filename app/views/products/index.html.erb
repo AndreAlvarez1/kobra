@@ -36,18 +36,32 @@
 <%= link_to 'New Product', new_product_path %>
 
 
-<% if params[:buyer_id].present?%>
-<h1>Ver Canasta</h1>
-<p><%= @cantidad %></p>
 
-<table class="table">
-  <% @orders.each do |order| %>
-  <tr>
-  <td><%= order.buyer.first_name + ' ' + order.buyer.last_name %></td>
-  <td><%= order.product.name%></td>
-  <td><%= order.product.price%></td>
-  <td><%= order.status%></td>
-  <tr>
-  <% end %>
-  </table>
-<% end %>
+
+
+
+<% if params[:buyer_id].present?%>
+
+<button class="btn black btn-lg btn-block fixed-bottom" data-toggle="modal" data-target="#canasta"><%= @cantidad %> | Ver Canasta | $<%= @total %> |</button>
+
+
+<div class="modal" id="canasta">
+  <div class="bottom white b-t" style="height:240px">
+
+      <table class="table">
+        <% @orders.each do |order| %>
+        <tr>
+        <td><%= order.buyer.first_name + ' ' + order.buyer.last_name %></td>
+        <td><%= order.product.name%></td>
+        <td><%= order.product.price%></td>
+        <td><%= order.status%></td>
+        <tr>
+        <% end %>
+        </table>
+      <% end %>
+
+
+
+
+  </div>
+</div>

@@ -1,5 +1,31 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<h1>Orders</h1>
+
+<p>Current Seller: <%= @seller.first_name %></p>
+
+
+
+
+
+
+
+
+  <table class="table">
+    <% @seller.buyers.each do |buyer| %>
+     <% buyer.orders do |order| %>
+        <tr>
+        <td><%= order.buyer.first_name + ' ' + order.buyer.last_name %></td>
+        <td><%= order.product.name%></td>
+        <td><%= order.product.price%></td>
+        <td><%= order.status%></td>
+        <td><%= order.buyer.seller.first_name%></td>
+        <tr>
+     <% end %>
+    <% end %>
+    </table>
+
+
+
+<p>--------</p>
 
 
 <table class="table">
@@ -9,6 +35,7 @@
   <td><%= order.product.name%></td>
   <td><%= order.product.price%></td>
   <td><%= order.status%></td>
+  <td><%= order.buyer.seller.first_name%></td>
   <tr>
   <% end %>
   </table>
