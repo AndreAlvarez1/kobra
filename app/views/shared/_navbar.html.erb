@@ -1,16 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-  <a class="navbar-brand" href="#">!Kobra</a>
+  <%= image_tag 'kobra_blanco.svg', class:"logo" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class=" row collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="col-sm-12 col-md-10">
 
     <ul class="navbar-nav mr-auto">
         <% if seller_signed_in? %>
-        <li class="nav-item active">
-          <p>Bienvenido: <%= current_seller.first_name %> </p>
-        </li>
         <li class="nav-item active">
           <%= link_to 'Productos', products_path, class: 'nav-link' %>
         </li>
@@ -20,20 +18,41 @@
         <li class="nav-item active">
           <%= link_to 'Orders', orders_index_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item active">
-          <%= link_to 'Editar Usuario', edit_seller_registration_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to 'Cerrar Sesión', destroy_seller_session_path, method: :delete, class: 'nav-link' %>
-        </li>
-        <% else %>
-            <li class="nav-item">
-              <%= link_to 'Iniciar sesión', new_seller_session_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Registrarse',  new_seller_registration_path, class: 'nav-link'%>
-            </li>
-        <% end %>
+          <% end %>
     </ul>
+  </div>
+
+  <% if seller_signed_in? %>
+  <div class="col-sm-12 col-md-2 ">
+    <ul class="navbar-nav mr-auto float-right">
+        <li class="nav-item active text-right">
+          <a class="nav-link clear" href="" data-toggle="dropdown" aria-expanded="false" >Bienvenido: <br/ ><%= current_seller.first_name %></a>
+
+          <div class="dropdown-menu pull-right dropdown-menu-scale">
+            <a class="dropdown-item" ui-sref="app.inbox.list">
+            <%= link_to 'Editar Usuario', edit_seller_registration_path, class:"dropdown-item" %>
+            </a>
+
+            <div class="dropdown-divider"></div>
+
+            <a class="dropdown-item" ui-sref="app.inbox.list">
+              <%= link_to 'Cerrar Sesión', destroy_seller_session_path, method: :delete, class:"dropdown-item" %>
+            </a>
+          </div>
+        </li>
+      </ul>
+    <% else %>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+      <%= link_to 'Iniciar sesión', new_seller_session_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+      <%= link_to 'Registrarse',  new_seller_registration_path, class: 'nav-link'%>
+      </li>
+    </ul>
+  </div>
+    <% end %>
+
+
   </div>
 </nav>

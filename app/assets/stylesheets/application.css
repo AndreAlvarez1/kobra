@@ -10,15 +10,41 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap/dist/css/bootstrap
  *= require tether/dist/css/tether
+ *= require font-awesome/css/font-awesome
  *= require styles/app
  *= require_tree .
  *= require_self
  */
 
+*{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
 
 body{
   margin: 0;
+  background-color: #ECECEC;
+}
+
+
+
+h1{
+  padding-left: 20px;
+  font-family: 'Carter One', cursive;
+}
+
+td{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+.contenedor{
+  background-color: white;
+  margin: 10px;
+  padding:20px 0;
+  height: 100vh;
 }
 
 .bg-black{
@@ -30,10 +56,48 @@ body{
   background-color: #F5F5F5;
 }
 
+
 .btn a:visited {
 color:white;
 }
 
 .btn-lg{
   border-radius: 0;
+}
+
+.logo{
+  width: 20%;
+}
+
+.container{
+  padding-top: 20px;
+  background-color: white;
+}
+
+.verde{
+  background-color: #52bf90;
+}
+
+.serpientes{
+  height: 100vh;
+  background-image: url("fondo1.svg");
+
+}
+
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+
+
+  .logo{
+    width: 10%;
+  }
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
 }

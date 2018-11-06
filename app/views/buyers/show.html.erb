@@ -33,4 +33,6 @@
 </p>
 
 <%= link_to 'Edit', edit_buyer_path(@buyer) %> |
+<%= link_to 'Destroy', @buyer, method: :delete, data: { confirm: 'Are you sure?' } %> |
+
 <%= link_to 'Back', buyers_path %>

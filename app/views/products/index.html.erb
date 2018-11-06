@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Products</h1>
 
 <table class="table">
@@ -35,20 +33,32 @@
 
 <%= link_to 'New Product', new_product_path %>
 
-
-
-
-
-
 <% if params[:buyer_id].present?%>
 
-<button class="btn black btn-lg btn-block fixed-bottom" data-toggle="modal" data-target="#canasta"><%= @cantidad %> | Ver Canasta | $<%= @total %> |</button>
+<button class="btn black btn-lg btn-block fixed-bottom" data-toggle="modal" data-target="#canasta"><%= @cantidad %> | <i class="fa fa-shopping-basket"></i> Ver Canasta | $<%= @total %> | </button>
 
 
 <div class="modal" id="canasta">
   <div class="bottom white b-t" style="height:240px">
+    <div class="row-col"><a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">×</a>
+      <div class="p-a b-b"><span class="h5">Canasta</span></div>
+      <div class="row-row">
+        <div class="row-body">
+          <div class="row-inner">
+            <div class="list-group no-radius no-borders">
 
-      <table class="table">
+              <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md">
+                <img src="../assets/images/a2.jpg" class="pull-left w-40 m-r img-circle">
+                <div class="clear">
+                  <span class="font-bold block">James Pill</span>
+                  <span class="clear text-ellipsis text-xs">"Lorem ipsum dolor sit amet onsectetur adipiscing elit"</span>
+                </div>
+              </a>
+              <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-warning text-xs m-r-xs"></i><i class="fa fa-circle text-muted text-xs m-r-xs"></i>  <a href="" class="text-muted m-h"><i class="fa fa-fw fa-facebook"></i> Facebook</a></div></div>
+
+
+
+    <table class="table">
         <% @orders.each do |order| %>
         <tr>
         <td><%= order.buyer.first_name + ' ' + order.buyer.last_name %></td>
@@ -59,9 +69,5 @@
         <% end %>
         </table>
       <% end %>
-
-
-
-
-  </div>
+    </div>
 </div>

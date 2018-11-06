@@ -1,37 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div id="buyers" class="row justify-content-center ">
+  <div class="col-sm-11 offset-sm-1 contenedor" style="padding:20px 0">
 
-<h1>Buyers</h1>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th colspan="1"></th>
-      <th>Nombre</th>
-      <th>Celular</th>
-      <th>Email</th>
-      <th>Observaciones</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @buyers.each do |buyer| %>
+  <h1>Buyers</h1>
+  <table class="table table-striped table-responsive-xl">
+    <thead>
       <tr>
-        <td><%= buyer.photo %></td>
-        <td><%= buyer.first_name %> <%= buyer.last_name %></td>
-        <td><%= buyer.phone %></td>
-        <td><%= buyer.email %></td>
-        <td><%= buyer.detail %></td>
-        <td><%= link_to 'VENDER',buyer_products_path(buyer), class:"btn btn-dark" %></td>
-        <td><%= link_to 'Show', buyer %></td>
-        <td><%= link_to 'Edit', edit_buyer_path(buyer) %></td>
-        <td><%= link_to 'Destroy', buyer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th colspan="1"></th>
+        <th>Nombre</th>
+        <th>Celular</th>
+        <th class="d-none d-md-block">Email</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @buyers.each do |buyer| %>
+        <tr>
+          <td><%= buyer.photo %></td>
+          <td><%= buyer.first_name %> <%= buyer.last_name %></td>
+          <td><%= buyer.phone %></td>
+          <td class="d-none d-md-block"><%= buyer.email %></td>
+
+          <td><%= link_to 'VENDER',buyer_products_path(buyer), class:"btn btn-dark" %></td>
+          <td><i class="fa fa-eye fa-2x"></i></td>
+          <td><%= link_to 'Show', buyer %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <div class="fixed-bottom">
+    <%= link_to 'Crear Cliente', new_buyer_path, class:"btn verde btn-lg btn-block" %>
+</div>
 
 
-<%= link_to 'Crear Cliente', new_buyer_path, class:"btn btn-primary btn-lg btn-block" %>
+
+
+  </div><!-- FIN Columna -->
+</div> <!-- FIN row -->

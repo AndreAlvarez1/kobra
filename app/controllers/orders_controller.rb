@@ -15,7 +15,5 @@ class OrdersController < ApplicationController
     @order.save
     redirect_to buyer_products_path(params[:buyer_id])
   end
-
-
-
+  
 end
