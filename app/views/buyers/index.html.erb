@@ -2,7 +2,7 @@
   <div class="col-sm-11 offset-sm-1 contenedor" style="padding:20px 0">
 
   <h1>Buyers</h1>
-  <table class="table table-striped table-responsive-xl">
+  <table class="table table-striped table-hover table-responsive-xl">
     <thead>
       <tr>
         <th colspan="1"></th>
@@ -15,17 +15,18 @@
 
     <tbody>
       <% @buyers.each do |buyer| %>
+      <%= link_to products_path do %>
+      <div>
         <tr>
           <td><%= buyer.photo %></td>
           <td><%= buyer.first_name %> <%= buyer.last_name %></td>
           <td><%= buyer.phone %></td>
           <td class="d-none d-md-block"><%= buyer.email %></td>
-
           <td><%= link_to 'VENDER',buyer_products_path(buyer), class:"btn btn-dark" %></td>
-          <td><i class="fa fa-eye fa-2x"></i></td>
-          <td><%= link_to 'Show', buyer %></td>
-
+          <td>  <%= link_to '<i class="fa fa-eye fa-2x"></i>'.html_safe, buyer %><td>
         </tr>
+    </div>
+      <% end %>
       <% end %>
     </tbody>
   </table>

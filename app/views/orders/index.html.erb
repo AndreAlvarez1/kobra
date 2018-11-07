@@ -1,41 +1,19 @@
-<h1>Orders</h1>
+<div id="products" class="row justify-content-center ">
+  <div class="col-sm-11 offset-sm-1 contenedor" style="padding:20px 0">
 
-<p>Current Seller: <%= @seller.first_name %></p>
-
-
-
-
-
-
-
-
-  <table class="table">
-    <% @seller.buyers.each do |buyer| %>
-     <% buyer.orders do |order| %>
-        <tr>
-        <td><%= order.buyer.first_name + ' ' + order.buyer.last_name %></td>
-        <td><%= order.product.name%></td>
-        <td><%= order.product.price%></td>
-        <td><%= order.status%></td>
-        <td><%= order.buyer.seller.first_name%></td>
-        <tr>
-     <% end %>
+  <h1>Orders</h1>
+  <table class="table table-striped table-hover table-responsive-sm">
+    <% @orders.each do |order| %>
+    <tr>
+    <td><%= order.buyer.first_name + ' ' + order.buyer.last_name %></td>
+    <td><%= order.product.name%></td>
+    <td>$<%= order.product.price%></td>
+    <td><%= order.created_at.strftime(" %d-%m-%y ")%></td>
+    <td><%= order.status%></td>
+    <tr>
     <% end %>
     </table>
 
 
-
-<p>--------</p>
-
-
-<table class="table">
-  <% @orders.each do |order| %>
-  <tr>
-  <td><%= order.buyer.first_name + ' ' + order.buyer.last_name %></td>
-  <td><%= order.product.name%></td>
-  <td><%= order.product.price%></td>
-  <td><%= order.status%></td>
-  <td><%= order.buyer.seller.first_name%></td>
-  <tr>
-  <% end %>
-  </table>
+  </div>
+</div>

@@ -5,5 +5,6 @@ class Seller < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :products
   has_many :buyers
+  has_many :orders, through: :buyers
 
 end
