@@ -30,9 +30,6 @@ class BuyersController < ApplicationController
   end
 
 
-
-
-
   # POST /buyers
   # POST /buyers.json
   def create

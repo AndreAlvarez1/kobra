@@ -16,4 +16,15 @@ class OrdersController < ApplicationController
     redirect_to buyer_products_path(params[:buyer_id])
   end
 
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    respond_to do |format|
+      format.html { redirect_to orders_url, notice: 'La orden fue eliminada con exito.' }
+      format.json { head :no_content }
+    end
+  end
+
+
 end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :products
+  resources :orders
 
   devise_for :sellers, controllers: {
     registrations: 'sellers/registrations'

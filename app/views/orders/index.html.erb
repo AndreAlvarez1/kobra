@@ -10,8 +10,12 @@
     <td>$<%= order.product.price%></td>
     <td><%= order.created_at.strftime(" %d-%m-%y ")%></td>
     <td><%= order.status%></td>
+    <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, order, method: :delete, data: { confirm: 'Seguro?' } %><td>
     <tr>
     <% end %>
+    <tr>
+      <td>Ventas totales <%= @orders.map{|order| order.product.price}.sum%></td>
+    </tr>
     </table>
 
 
