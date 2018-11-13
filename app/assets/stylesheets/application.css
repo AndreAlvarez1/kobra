@@ -13,6 +13,7 @@
  *= require bootstrap/dist/css/bootstrap
  *= require tether/dist/css/tether
  *= require font-awesome/css/font-awesome
+ *= require dataTables.net-bs4/css/dataTables.bootstrap4
  *= require styles/app
  *= require_tree .
  *= require_self

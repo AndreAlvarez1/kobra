@@ -13,6 +13,8 @@
 
 //= require jquery/dist/jquery
 //= require jquery/bootstrap/dist/js/bootstrap
+//= require datatables.net/js/jquery.dataTables
+//= require datatables.net-bs4/js/dataTables.bootstrap4
 //= require tether/dist/js/tether
 //= require tether/dist/js/tether
 //= require rails-ujs
