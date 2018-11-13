@@ -13,7 +13,6 @@
   <% end %>
 
 
-
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -31,8 +30,12 @@
 
   <div class="field">
     <%= form.label :category %>
-    <%= form.number_field :category %>
+    <%= form.select :category, Product.categories.keys.to_a %>
   </div>
+
+
+
+
 
   <div class="actions">
     <%= form.submit %>
