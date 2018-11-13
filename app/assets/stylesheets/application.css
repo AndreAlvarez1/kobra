@@ -83,7 +83,13 @@ color:white;
 .serpientes{
   height: 100vh;
   background-image: url("fondo1.svg");
+  border: 2px solid white;
 
+}
+
+.foto_cliente{
+  border-radius: 100px;
+  width: 30px;
 }
 
 @media (min-width: 576px) {

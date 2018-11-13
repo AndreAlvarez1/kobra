@@ -2,7 +2,7 @@
   <div class="col-sm-11 offset-sm-1 contenedor" style="padding:20px 0">
 
   <h1>Buyers</h1>
-  <table class="table table-striped table-hover table-responsive-xl">
+  <table class="table table-striped table-hover table-responsive-xl ">
     <thead>
       <tr>
         <th colspan="1"></th>
@@ -18,7 +18,8 @@
       <%= link_to products_path do %>
       <div>
         <tr>
-          <td><%= buyer.photo %></td>
+          <td><%= image_tag buyer.photo.to_s, class:"foto_cliente" %></td>
+
           <td><%= buyer.first_name %> <%= buyer.last_name %></td>
           <td><%= buyer.phone %></td>
           <td class="d-none d-md-block"><%= buyer.email %></td>

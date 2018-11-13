@@ -10,6 +10,8 @@ gem 'sqlite3'
 
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 
+gem 'carrierwave'
+
 gem 'rails-erd', require: false, group: :development
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

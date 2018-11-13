@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-
+<p>
+  <td><%= image_tag @buyer.photo.to_s %></td>
+</p>
 
 <p>
   <strong>First name:</strong>
@@ -12,10 +14,7 @@
   <%= @buyer.last_name %>
 </p>
 
-<p>
-  <strong>Photo:</strong>
-  <%= @buyer.photo %>
-</p>
+
 
 <p>
   <strong>Phone:</strong>
