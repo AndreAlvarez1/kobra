@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-
 //= require jquery/dist/jquery
 //= require jquery/bootstrap/dist/js/bootstrap
 //= require datatables.net/js/jquery.dataTables
