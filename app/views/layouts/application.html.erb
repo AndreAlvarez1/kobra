@@ -20,11 +20,13 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
+      <%= render "layouts/alerts" %>
+      <div class="alerts">
+        <%= render "shared/navbar" %>
+      </div>
 
-          <%= yield %>
 
-    <p id="notice"><%= notice %></p>
-    <p class="alert"<%= alert %></p>
+    <%= yield %>
+
   </body>
 </html>

@@ -1,0 +1,7 @@
+if ($(".modal").hasClass('in') == true){
+  $(".modal").modal("hide");
+}
+
+$("#calendar").fullCalendar("refetchEvents");
+$('.flash').html("<%= j render 'layouts/alerts', locals:{flash: flash} %>")
+$(".modal").modal("hide");

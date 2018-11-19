@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   get 'orders/index'
 
   resources :buyers do
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/index'
   get 'pages/dashboard'
+  get 'pages/calendar'
   get 'pages/modal'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

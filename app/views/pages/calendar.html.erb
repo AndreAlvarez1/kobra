@@ -1,0 +1,10 @@
+<p>Calendario</p>
+<div id='calendar'></div>
+
+
+
+<script>
+  $('#calendar').fullCalendar({
+    events: <%= events.json %>
+})
+</script>

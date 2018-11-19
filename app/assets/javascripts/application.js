@@ -10,13 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require tether/dist/js/tether
 //= require jquery/dist/jquery
 //= require jquery/bootstrap/dist/js/bootstrap
 //= require datatables.net/js/jquery.dataTables
 //= require datatables.net-bs4/js/dataTables.bootstrap4
-//= require tether/dist/js/tether
-//= require tether/dist/js/tether
 //= require rails-ujs
-//= require activestorage
 //= require turbolinks
+//= require moment/moment
+//= require moment-timezone/moment-timezone
+//= require bootstrap4-datetimepicker/build/js/bootstrap-datetimepicker.min
+//= require fullcalendar/dist/fullcalendar
+//= require activestorage
+
 //= require_tree .
