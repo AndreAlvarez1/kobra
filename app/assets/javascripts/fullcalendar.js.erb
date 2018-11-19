@@ -1,0 +1,50 @@
+document.addEventListener("turbolinks:before-cache", function(){
+  $('#calendar').fullCalendar('destroy')
+});
+
+
+document.addEventListener("turbolinks:load", function(){
+$('#calendar').fullCalendar({
+  events: '/events',
+  editable: true,
+  eventClick: function( event, jsEvent, view ) {
+        $.ajax({
+          url: '/events/' + event.id + '/edit',
+          type: 'GET',
+          dataType: 'script',
+        })
+        .done(function() {
+          console.log("success");
+        })
+        .fail(function() {
+          console.log("error");
+        })
+        .always(function() {
+          console.log("complete");
+        });
+  },
+  eventDrop: function( event, delta, revertFunc, jsEvent, ui, view ) {
+    console.log(event.start.format());
+    $.ajax({
+      url: '/events/' + event.id,
+      type: 'PATCH',
+      dataType: 'script',
+      data: {
+        event: {start: event.start.format()},
+        authenticity_token: $("#calendar").data('token')
+      }
+    })
+    .done(function() {
+      console.log("success");
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+  }
+})
+
+
+});
