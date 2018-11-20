@@ -12,7 +12,8 @@ class OrdersController < ApplicationController
   def create
     @buyer = Buyer.find(params[:buyer_id])
     @product = Product.find(params[:product])
-    @order = Order.create(product: @product, buyer: @buyer)
+    @order = Order.create(product: @product, buyer: @buyer, price: @product.price)
+    @order.quantity += 1
     @order.save
     redirect_to buyer_products_path(params[:buyer_id])
   end

@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_144526) do
+ActiveRecord::Schema.define(version: 2018_11_20_012740) do
+
+  create_table "billings", force: :cascade do |t|
+    t.string "code"
+    t.string "payment_method"
+    t.integer "amount"
+    t.string "currency"
+    t.integer "buyer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_billings_on_buyer_id"
+  end
 
   create_table "buyers", force: :cascade do |t|
     t.integer "seller_id"
@@ -41,6 +52,10 @@ ActiveRecord::Schema.define(version: 2018_11_16_144526) do
     t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "billing_id"
+    t.integer "quantity", default: 0
+    t.integer "price"
+    t.index ["billing_id"], name: "index_orders_on_billing_id"
     t.index ["buyer_id"], name: "index_orders_on_buyer_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
   end

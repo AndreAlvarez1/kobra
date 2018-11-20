@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   resources :products
   resources :orders
 
+  resources :billings, only:[] do
+    collection do
+      get 'pre_pay'
+    end
+  end
+
   devise_for :sellers, controllers: {
     registrations: 'sellers/registrations'
   }
