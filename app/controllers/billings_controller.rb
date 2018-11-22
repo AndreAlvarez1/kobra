@@ -35,7 +35,7 @@ class BillingsController < ApplicationController
             order.status = 1
             order.save
           end
-        
+
           redirect_url = @payment.links.find{|v| v.method == "REDIRECT" }.href
             respond_to do |format|
               format.html {redirect_to orders_path}
