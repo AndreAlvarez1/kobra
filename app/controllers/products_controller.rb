@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     @seller = current_seller
     if params[:buyer_id].present?
       @buyer = Buyer.find(params[:buyer_id])
-      @orders = Order.where(buyer_id: @buyer.id)
+      @orders = Order.where(buyer_id: @buyer.id, status: 0)
       @cantidad = @orders.length
       @total = 0
       @orders.each do |order|

@@ -2,7 +2,7 @@ class BillingsController < ApplicationController
 
   def pre_pay
     @buyer = Buyer.find(params[:buyer_id])
-    orders = @buyer.orders.where(status: false)
+    orders = @buyer.orders.where(status: 0)
     total = orders.pluck("price*quantity").sum()
     items = orders.map do |order|
       item = {}
@@ -31,8 +31,15 @@ class BillingsController < ApplicationController
       :description =>  "Carro de Compra KOBRA" }]})
 
         if @payment.create
+          orders.map do |order|
+            order.status = 1
+            order.save
+          end
+        
           redirect_url = @payment.links.find{|v| v.method == "REDIRECT" }.href
-          redirect_to redirect_url
+            respond_to do |format|
+              format.html {redirect_to orders_path}
+            end
         else
           ':('
         end
