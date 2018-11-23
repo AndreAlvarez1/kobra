@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :sellers, controllers: {
-    registrations: 'sellers/registrations'
+    registrations: 'sellers/registrations',
+    sessions: 'sellers/sessions'
   }
   root to: 'pages#index'
   get 'pages/home'

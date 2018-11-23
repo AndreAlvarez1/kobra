@@ -31,15 +31,20 @@ class BillingsController < ApplicationController
       :description =>  "Carro de Compra KOBRA" }]})
 
         if @payment.create
+
+          redirect_url = @payment.links.find{|v| v.method == "REDIRECT" }.href
+
+
           orders.map do |order|
             order.status = 1
             order.save
           end
 
-          redirect_url = @payment.links.find{|v| v.method == "REDIRECT" }.href
-            respond_to do |format|
-              format.html {redirect_to orders_path}
-            end
+          ExampleMailer.sample_email(@buyer,redirect_url).deliver
+
+          respond_to do |format|
+              format.html {redirect_to orders_path}'
+          end
         else
           ':('
         end
