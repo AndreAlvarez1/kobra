@@ -19,7 +19,7 @@ class BillingsController < ApplicationController
     :payer =>  {
       :payment_method =>  "paypal" },
     :redirect_urls => {
-      :return_url => "http://localhost:3000/payment/execute",
+      :return_url => "http://localhost:3000/billings/execute/#{@buyer.id}",
       :cancel_url => "http://localhost:3000/" },
     :transactions =>  [{
       :item_list => {
@@ -34,7 +34,6 @@ class BillingsController < ApplicationController
 
           redirect_url = @payment.links.find{|v| v.method == "REDIRECT" }.href
 
-
           orders.map do |order|
             order.status = 1
             order.save
@@ -43,11 +42,39 @@ class BillingsController < ApplicationController
           ExampleMailer.sample_email(@buyer,redirect_url).deliver
 
           respond_to do |format|
-              format.html {redirect_to orders_path}'
+              format.html {redirect_to orders_path}
           end
         else
           ':('
         end
+  end
+
+
+  def execute
+    debugger
+    @buyer = Buyer.find(params[:buyer_id])
+
+    paypal_payment = PayPal::SDK::REST::Payment.find(params[:paymentId])
+     if paypal_payment.execute(payer_id: params[:PayerID])
+
+       amount = paypal_payment.transactions.first.amount.total
+
+       billing = Billing.create(
+       buyer: @buyer,
+       code: paypal_payment.id,
+       payment_method: 'paypal',
+       amount: amount,
+       currency: 'USD'
+       )
+
+       orders = @buyer.orders.where(status: 1)
+       orders.update_all(status: 2, billing_id: billing.id)
+
+       redirect_to root_path, notice: "La compra se realizó con éxito!"
+     else
+       render plain: "No se puedo generar el cobro en PayPal."
+     end
+
   end
 
 end

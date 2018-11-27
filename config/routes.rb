@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :billings, only:[] do
     collection do
       get 'pre_pay'
+      get 'execute/:buyer_id', to: 'billings#execute'
     end
   end
 
