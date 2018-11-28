@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     @seller = current_seller
     if params[:buyer_id].present?
       @buyer = Buyer.find(params[:buyer_id])
-      @orders = Order.where(buyer_id: @buyer.id)
+      @orders = Order.where(buyer_id: @buyer.id, status: 0)
       @cantidad = @orders.length
       @total = 0
       @orders.each do |order|
@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to products_path, notice: 'Producto creado con exito' }
+        format.html { redirect_to products_path, flash[:notice] = "Producto creado con exito"}
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }

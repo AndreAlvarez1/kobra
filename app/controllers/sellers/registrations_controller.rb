@@ -12,7 +12,6 @@ class Sellers::RegistrationsController < Devise::RegistrationsController
   # POST /resource
    def create
      super
-     redirect_to pages_dashboard_path
    end
 
   # GET /resource/edit

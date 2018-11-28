@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   resources :events
   get 'orders/index'
 
@@ -11,8 +12,16 @@ Rails.application.routes.draw do
   resources :products
   resources :orders
 
+  resources :billings, only:[] do
+    collection do
+      get 'pre_pay'
+      get 'execute/:buyer_id', to: 'billings#execute'
+    end
+  end
+
   devise_for :sellers, controllers: {
-    registrations: 'sellers/registrations'
+    registrations: 'sellers/registrations',
+    sessions: 'sellers/sessions'
   }
   root to: 'pages#index'
   get 'pages/home'
@@ -20,5 +29,6 @@ Rails.application.routes.draw do
   get 'pages/dashboard'
   get 'pages/calendar'
   get 'pages/modal'
+  get 'pages/success'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

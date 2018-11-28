@@ -23,11 +23,6 @@ class BuyersController < ApplicationController
   def edit
   end
 
-  def preorders
-    @seller = current_seller
-    @buyers = @seller.buyers
-    @products = @seller.products
-  end
 
 
   # POST /buyers

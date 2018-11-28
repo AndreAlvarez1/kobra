@@ -19,14 +19,14 @@
     <%= form.text_field :title %>
   </div>
 
-  <div class="field">
+  <div class="field" id="newDate">
     <%= form.label :start %>
-    <%= form.text_field :start %>
+    <%= form.text_field :start, id: 'event_start' %>
   </div>
 
   <div class="field">
     <%= form.label :end %>
-    <%= form.text_field :end %>
+    <%= form.text_field :end, id: 'event_end'  %>
   </div>
 
   <div class="actions">

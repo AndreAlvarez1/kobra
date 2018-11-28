@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_seller!, except:[:index]
+  before_action :authenticate_seller!, except:[:index,:succes]
 
   def index
   end
@@ -12,4 +12,7 @@ class PagesController < ApplicationController
 
   def calendar
   end
+
+  def success
+  end  
 end
