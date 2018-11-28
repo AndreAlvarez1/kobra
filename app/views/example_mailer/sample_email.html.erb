@@ -4,11 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hola <%= @user.first_name %></h1>
+    <h1>Hola <%= @user.first_name %> <%= @user.last_name %></h1>
     <img src="http://andrealvarez.com/imagenes/kobra_logo.png" width="200px">
     <p><%= @texto %></p>
-    <a href="<%= @link %>">Pagar haciendo click aqui </a>
-
+    <a style="color:rgb(255,255,255);display:inline-block;background-color:rgb(233,80,29);border:1px solid rgb(233,80,29);border-radius:5px;box-sizing:border-box;text-decoration:none;font-size:14px;font-weight:bold;margin:0px;padding:12px 25px;text-transform:capitalize" href="<%= @link %>">Pagar aquí</a>
 
   </body>
 </html>
