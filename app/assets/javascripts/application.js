@@ -22,5 +22,5 @@
 //= require bootstrap4-datetimepicker/build/js/bootstrap-datetimepicker.min
 //= require fullcalendar/dist/fullcalendar
 //= require activestorage
-
+//= stub active_admin.js
 //= require_tree .

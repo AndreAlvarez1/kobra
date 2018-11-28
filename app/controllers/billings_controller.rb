@@ -42,7 +42,7 @@ class BillingsController < ApplicationController
           ExampleMailer.sample_email(@buyer,redirect_url).deliver
 
           respond_to do |format|
-              format.html {redirect_to orders_path}
+              format.html {redirect_to pages_success_path}
           end
         else
           ':('
@@ -51,7 +51,6 @@ class BillingsController < ApplicationController
 
 
   def execute
-    debugger
     @buyer = Buyer.find(params[:buyer_id])
 
     paypal_payment = PayPal::SDK::REST::Payment.find(params[:paymentId])

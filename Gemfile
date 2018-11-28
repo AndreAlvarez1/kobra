@@ -12,7 +12,12 @@ gem 'sqlite3', group: :development
 
 gem 'pg', group: :production
 
+gem 'activeadmin'
+
+gem 'arctic_admin'
+
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
+
 
 gem 'carrierwave'
 
