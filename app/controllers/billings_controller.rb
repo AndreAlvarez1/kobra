@@ -36,13 +36,14 @@ class BillingsController < ApplicationController
 
           orders.map do |order|
             order.status = 1
+            order.payment_id = @payment.id
             order.save
           end
 
           ExampleMailer.sample_email(@buyer,redirect_url).deliver
 
           respond_to do |format|
-              format.html {redirect_to pages_success_path}
+              format.html {redirect_to orders_path}
           end
         else
           ':('
@@ -66,10 +67,10 @@ class BillingsController < ApplicationController
        currency: 'USD'
        )
 
-       orders = @buyer.orders.where(status: 1)
-       orders.update_all(status: 2, billing_id: billing.id)
+       orders = @buyer.orders.where(status: 1, payment_id: params[:paymentId])
+       orders.update_all(status: 2)
 
-       redirect_to root_path, notice: "La compra se realizó con éxito!"
+       redirect_to pages_success_path, notice: "La compra se realizó con éxito!"
      else
        render plain: "No se puedo generar el cobro en PayPal."
      end
