@@ -1,37 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class="row buyer">
+  <div class="col-sm-12 col-md-2">
+    <%= image_tag @buyer.photo.to_s, class:"foto_buyer" %>
+  </div>
 
-<p>
-  <td><%= image_tag @buyer.photo.to_s %></td>
-</p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @buyer.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @buyer.last_name %>
-</p>
-
-
-
-<p>
-  <strong>Phone:</strong>
-  <%= @buyer.phone %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @buyer.email %>
-</p>
-
-<p>
-  <strong>Detail:</strong>
-  <%= @buyer.detail %>
-</p>
-
-<%= link_to 'Edit', edit_buyer_path(@buyer) %> |
-<%= link_to 'Destroy', @buyer, method: :delete, data: { confirm: 'Are you sure?' } %> |
-
-<%= link_to 'Back', buyers_path %>
+  <div class="col-sm-12 col-md-10">
+    <h1><%=@buyer.first_name %>  <%= @buyer.last_name %></h1>
+    <p><%= @buyer.phone %></p>
+    <p><%= @buyer.email %></p>
+    <p><%= @buyer.detail %></p>
+    <%= link_to 'Edit', edit_buyer_path(@buyer) %> |
+    <%= link_to 'Destroy', @buyer, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to 'Back', buyers_path %>
+  </div>
+</div>
