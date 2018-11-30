@@ -12,6 +12,8 @@ class BuyersController < ApplicationController
   # GET /buyers/1
   # GET /buyers/1.json
   def show
+    @billings = @buyer.billings
+
   end
 
   # GET /buyers/new
