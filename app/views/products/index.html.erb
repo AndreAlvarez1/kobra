@@ -45,10 +45,20 @@
 
   <div class="modal" id="canasta">
     <div class="bottom white b-t" style="height:90vh">
-      <div class="row-col"><a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">×</a>
+      <div class="row-col">
 
-          <div class="p-a b-b">
-            <span class="h5">Canasta de <%= @buyer.first_name + ' ' + @buyer.last_name  %></span>
+          <div class="p-a b-b canasta_header row">
+              <div class="col-3 col-md-1">
+                <%= image_tag 'canasta.svg', class:"ico_canasta"%>
+              </div>
+              <div class="col-8 col-md-10">
+                <p>Canaste de</p>
+                <span class="h5"><%= @buyer.first_name + ' ' + @buyer.last_name  %></span>
+                <p>Total: $<%= @total %></p>
+              </div>
+              <div class="col-1 col-md-1">
+                <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">×</a>
+              </div>
           </div>
 
           <div class="row">
@@ -58,18 +68,28 @@
                     <tr>
                       <td><%= order.product.name%></td>
                       <td><%= number_to_currency(order.product.price, precision: 0, seperator: ",", delimiter: ".")%></td>
-
                       <td><%= order.created_at.strftime(" %d-%m-%y ")%></td>
-                      <td><%= order.status%></td>
                       <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, order, method: :delete, data: { confirm: 'Seguro?' } %><td>
-
                     <tr>
                     <% end %>
+
                   </table>
                 </div>
           </div>
 
-          <%= link_to 'Confirmar compra', pre_pay_billings_path(buyer_id: @buyer.id), class:'btn btn-succes float-right' %>
+          <!--Botones guardar y kobrar que se ven solo si hay orders en la canasta %>-->
+          <% if @orders.count > 0 %>
+            <div class="row botones fixed-bottom">
+              <div class="col-md-2 offset-md-4 col-6">
+                <%= link_to "Guardar" ,root_path, class:"btn btn-success btn-block" %>
+              </div>
+              <div class="col-md-2 col-6">
+                <%= link_to "Kobrar" ,pre_pay_billings_path(buyer_id: @buyer.id), class:"btn btn-danger btn-block" %>
+              </div>
+            </div>
+          <% else %>
+            <p>Canaste Vacia</p>
+          <% end %>
 
         </div>
       </div>

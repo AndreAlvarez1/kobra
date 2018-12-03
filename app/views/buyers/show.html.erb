@@ -45,10 +45,13 @@
           <td>  <%= billing.status %></td>
           <td>
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#<%=billing.id %>" aria-expanded="false" aria-controls="collapseExample">Ver Detalle</button>
-            <% if billing.status != 0 %>
+            </td>
+            <td>
+            <% if billing.status == 1 %>
               <button class="btn btn-success" type="button" >Kobrar</button>
             <% end %>
           </td>
+
 
         </tr>
         <tr>

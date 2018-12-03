@@ -15,18 +15,19 @@
     <link href="https://fonts.googleapis.com/css?family=Carter+One|Roboto:300" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= favicon_link_tag asset_path('kobra_fav.png') %>
+    <%= favicon_link_tag asset_path('kobrita_verde.png') %>
 
   </head>
 
   <body>
-      <%= render "layouts/alerts" %>
-      <div class="alerts">
+        <%= render "layouts/alerts" %>
         <%= render "shared/navbar" %>
-      </div>
-
-
-    <%= yield %>
+        <%= yield %>
 
   </body>
+
+  <script>
+    $(".alert" ).delay(2000).fadeOut(3000);
+
+  </script>
 </html>

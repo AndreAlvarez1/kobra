@@ -3,11 +3,72 @@
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
-  <body>
-    <h1>Hola <%= @user.first_name %> <%= @user.last_name %></h1>
-    <img src="http://andrealvarez.com/imagenes/kobra_logo.png" width="200px">
-    <p><%= @texto %></p>
-    <a style="color:rgb(255,255,255);display:inline-block;background-color:rgb(233,80,29);border:1px solid rgb(233,80,29);border-radius:5px;box-sizing:border-box;text-decoration:none;font-size:14px;font-weight:bold;margin:0px;padding:12px 25px;text-transform:capitalize" href="<%= @link %>">Pagar aquí</a>
+  <body style="background-color:#F5F5F5; padding:40px 20px">
+    <div class="container" style="width:90%; padding:20px 0; background-color:white">
+      <h1 style="font-family:Arial, sans-serif; margin-left:20px">
+        Hola <%= @user.first_name %> <%= @user.last_name %>
+      </h1>
+      <p style="font-family:Arial, sans-serif; margin-left:20px">Aquí el detalle de los items por pagar a <%= @seller.first_name %> <%= @seller.last_name %></p>
+      <p style="font-family:Arial, sans-serif; margin-left:20px">Puedes pagar directamente haciendo click en el botón más abajo</p>
+      <p style="font-family:Arial, sans-serif; margin-left:20px">ID Kobro: #<%= @billing.id %> | Emitido el: <%= @billing.created_at.strftime(" %d-%m-%y ") %></p>
+
+      <table style="width:100%">
+        <tbody>
+          <% @billing.orders.each do |order| %>
+          <tr>
+            <td style=" padding: 0.75rem;
+                        vertical-align: top;
+                        border-top: 1px solid #dee2e6;">
+                        <%= order.product.name%>
+            </td>
+
+            <td style=" padding: 0.75rem;
+                        vertical-align: top;
+                        border-top: 1px solid #dee2e6;">
+              <%= number_to_currency(order.product.price, precision: 0, seperator: ",", delimiter: ".")%>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <div style="text-align:center; border-top:1px solid grey;padding-top:50px">
+        <a style="color:rgb(255,255,255);font-family:Arial; sans-serif;display:inline-block;background-color:rgb(233,80,29);border:1px solid rgb(233,80,29);border-radius:5px;box-sizing:border-box;text-decoration:none;font-size:14px;font-weight:bold;margin:0px;padding:12px 25px;text-transform:capitalize" href="<%= @link %>">Pagar aquí</a>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;
+                                width:90%;
+                                padding:20px 0;">
+        <a href="http://www.kobra.cl" style="font-family:Arial, sans-serif;font-size:12px;text-decoration:none">Este mail fue generado por:</a>
+    </div>
+
+
+
+    <div style="width:90%;
+                padding:20px 0;
+                height:100px;
+                text-align:center;
+                background-image: url('http://andrealvarez.com/imagenes/fondo1.svg')">
+
+          <div style="background-color:#58BE49;width:200px;float:none;margin-left:auto;margin-right:auto">
+            <a href="http://www.kobra.cl"><img src="http://andrealvarez.com/imagenes/k_logo_blanco.svg" width="200px"></a>
+          </div>
+
+    </div>
+
+
+    <div class="footer" style="text-align:center;
+                                width:90%;
+                                padding:20px 0;">
+        <p style="font-family:Arial, sans-serif;font-size:12px">Quieres saber como Kobrarle a tus clientes o llevar en orden tus cuentas visita nuestro sitio web</p>
+        <a style="font-family:Arial, sans-serif;color:#58BE49;cursor: pointer;font-size:12px" href="http://www.kobra.cl">www.kobra.cl</a>
+    </div>
+
+
+
+
 
   </body>
 </html>

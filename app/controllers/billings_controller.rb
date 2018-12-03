@@ -40,7 +40,7 @@ class BillingsController < ApplicationController
 
           billing = Billing.create(
           buyer: @buyer,
-          payment_id: @payment.id
+          payment_id: @payment.id,
           )
 
           redirect_url = @payment.links.find{|v| v.method == "REDIRECT" }.href
@@ -53,10 +53,10 @@ class BillingsController < ApplicationController
             order.save
           end
 
-          ExampleMailer.sample_email(@buyer,redirect_url).deliver
+          ExampleMailer.sample_email(@buyer,redirect_url,current_seller,billing).deliver
 
           respond_to do |format|
-              format.html {redirect_to orders_path}
+              format.html {redirect_to billings_path, notice: 'Kobro enviado con exito.'}
           end
         else
           ':('

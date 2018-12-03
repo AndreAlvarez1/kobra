@@ -42,6 +42,18 @@ td{
   font-weight: 300;
 }
 
+.alert {
+    position: absolute;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    text-align: center;
+}
+
 .contenedor{
   background-color: white;
   margin: 10px;
@@ -115,21 +127,34 @@ color:white;
   padding: 0;
 }
 
+.canasta_header{
+  background-color: #5089F0;
+  color:white;
+}
 
+.ico_canasta{
+  width: 70px;
+}
+
+#canasta p{
+  margin: 0;
+}
 
 @media (min-width: 576px) {
+
 }
 
 @media (min-width: 768px) {
-
-
   .logo{
     width: 10%;
   }
+
 }
 
 @media (min-width: 992px) {
-
+.botones{
+  margin-bottom: 20px;
+}
 }
 
 @media (min-width: 1200px) {

@@ -1,6 +1,6 @@
 # Preview all emails at http://localhost:3000/rails/mailers/example_mailer
 class ExampleMailerPreview < ActionMailer::Preview
   def sample_mail_preview
-      ExampleMailer.sample_email(Seller.first,"http://www.emol.cl")
+      ExampleMailer.sample_email(Buyer.first,"http://www.emol.cl",Seller.first,Billing.first)
     end
 end
