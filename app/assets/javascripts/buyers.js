@@ -6,8 +6,7 @@
 
   document.addEventListener('turbolinks:load', function(){
     $('#buyersTable').DataTable( {
-
-            initComplete: function () {
+      initComplete: function () {
 
                 this.api().columns().every( function () {
                     var column = this;

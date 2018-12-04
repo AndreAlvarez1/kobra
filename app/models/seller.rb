@@ -7,5 +7,6 @@ class Seller < ApplicationRecord
   has_many :buyers
   has_many :events
   has_many :orders, through: :buyers
+  has_many :billings, through: :buyers
 
 end

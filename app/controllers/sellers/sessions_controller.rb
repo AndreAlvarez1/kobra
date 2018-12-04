@@ -13,6 +13,10 @@ class Sellers::SessionsController < Devise::SessionsController
      super
    end
 
+   def after_sign_in_path_for(resource)
+     pages_dashboard_path(resource)
+   end
+
   # DELETE /resource/sign_out
   # def destroy
   #   super

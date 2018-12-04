@@ -2,7 +2,8 @@
 class BillingsController < ApplicationController
 
   def index
-    @billings = Billing.all
+    @seller = current_seller
+    @billings = @seller.billings
   end
 
 
