@@ -1,4 +1,10 @@
+
 class BillingsController < ApplicationController
+
+  def index
+    @billings = Billing.all
+  end
+
 
   def pre_pay
     @buyer = Buyer.find(params[:buyer_id])
@@ -32,17 +38,25 @@ class BillingsController < ApplicationController
 
         if @payment.create
 
+          billing = Billing.create(
+          buyer: @buyer,
+          payment_id: @payment.id,
+          )
+
           redirect_url = @payment.links.find{|v| v.method == "REDIRECT" }.href
+
 
           orders.map do |order|
             order.status = 1
+            order.payment_id = @payment.id
+            order.billing_id = billing.id
             order.save
           end
 
-          ExampleMailer.sample_email(@buyer,redirect_url).deliver
+          ExampleMailer.sample_email(@buyer,redirect_url,current_seller,billing).deliver
 
           respond_to do |format|
-              format.html {redirect_to pages_success_path}
+              format.html {redirect_to billings_path, notice: 'Kobro enviado con exito.'}
           end
         else
           ':('
@@ -50,26 +64,28 @@ class BillingsController < ApplicationController
   end
 
 
+
   def execute
     @buyer = Buyer.find(params[:buyer_id])
-
     paypal_payment = PayPal::SDK::REST::Payment.find(params[:paymentId])
      if paypal_payment.execute(payer_id: params[:PayerID])
 
        amount = paypal_payment.transactions.first.amount.total
 
-       billing = Billing.create(
+       billing = Billing.find_by(payment_id: params[:paymentId])
+       billing.update(
        buyer: @buyer,
        code: paypal_payment.id,
        payment_method: 'paypal',
        amount: amount,
-       currency: 'USD'
+       currency: 'USD',
+       status:1
        )
 
-       orders = @buyer.orders.where(status: 1)
-       orders.update_all(status: 2, billing_id: billing.id)
+       orders = @buyer.orders.where(status: 1, payment_id: params[:paymentId])
+       orders.update_all(status: 2)
 
-       redirect_to root_path, notice: "La compra se realizó con éxito!"
+       redirect_to pages_success_path, notice: "La compra se realizó con éxito!"
      else
        render plain: "No se puedo generar el cobro en PayPal."
      end

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :products
   resources :orders
 
-  resources :billings, only:[] do
+  resources :billings, only:[:index] do
     collection do
       get 'pre_pay'
       get 'execute/:buyer_id', to: 'billings#execute'

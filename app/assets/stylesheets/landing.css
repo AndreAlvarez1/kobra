@@ -1,0 +1,104 @@
+.parallax,.parallax1, .parallax2, .parallax3 {
+    background-image: url(fondo_header.jpg);
+    height: 700px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax1{
+  background-image: url(cel1.jpg);
+}
+
+.parallax2{
+  background-image: url(cel2.jpg);
+}
+
+.parallax3{
+  background-image: url(cel3.jpg);
+}
+
+.logo_header{
+  margin-top: 200px;
+}
+
+.logo_header img{
+  width:100%;
+}
+
+.intro{
+  background-image: url(fondo_intro_t.jpg);
+  padding: 100px 20px;
+}
+
+h3{
+  font-family: 'Carter One', cursive;
+  color:#606060;
+  font-size: 2.2em;
+}
+
+.celulares h4{
+  font-family: 'Carter One', cursive;
+  color:#606060;
+  font-size: 2.5em;
+  background-color: rgba(255, 255, 0, 0.5);
+  margin-top:180px;
+  text-align:center;
+}
+
+.celulares p{
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-top:10px;
+  text-align:center;
+}
+
+.mano{
+  background-image: url(mano.png);
+}
+
+.cuentas{
+  height: 600px;
+}
+
+
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+  .logo_header img{
+    width:500px;
+  }
+
+  .almedio{
+    margin-top:200px;
+  }
+  .celulares h4{
+    background-color: rgba(255, 0, 0, 0);
+    display: block;
+    margin:0;
+    text-align: right;
+  }
+
+  .celulares p{
+    background-color: rgba(255, 255, 255, 0);
+    margin-top:0px;
+    text-align:left;
+  }
+
+
+
+}
+
+@media (min-width: 992px) {
+  .intro{
+    background-image: url(fondo_intro.jpg);
+    padding: 250px 20px;
+  }
+
+
+}
+
+@media (min-width: 1200px) {
+}
