@@ -41,6 +41,8 @@ h1{
 td{
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
+  color:#686868;
+  cursor:pointer;
 }
 
 .alert {
@@ -59,7 +61,11 @@ td{
   background-color: white;
   margin: 10px;
   padding:20px 0;
-  
+
+}
+
+.clickeable{
+  color:black;
 }
 
 .bg-black{
@@ -113,7 +119,7 @@ color:white;
 
 .buyer{
   background-color: #5089F0;
-  padding: 20px 0;
+  padding: 20px 20px;
   color:white;
 }
 

@@ -1,4 +1,4 @@
-<div id="products" class="row justify-content-center ">
+<div id="products" class="row justify-content-center difuminar ">
   <div class="col-sm-11 offset-sm-1 contenedor" style="padding:20px 0">
 
       <div class="row">
@@ -15,24 +15,25 @@
         <thead>
           <tr>
             <th>Producto</th>
+            <th></th>
             <th>Detalle</th>
             <th>Precio</th>
+            <% if params[:buyer_id].present?%>
+              <th></th>
+            <%end %>
+            <th></th>
           </tr>
         </thead>
 
         <tbody>
           <% @products.each do |product| %>
-            <tr>
-              <td><%= product.name %></td>
+            <tr onclick="location.href='<%= product_path(product) %>'">
+              <td class="clickeable"><%= link_to product.name, product %><td>
               <td><%= product.detail %></td>
               <td><%= number_to_currency(product.price, precision: 0, seperator: ",", delimiter: ".")%></td>
-
-
               <% if params[:buyer_id].present?%>
-              <td><%= link_to 'Agregar', buyer_orders_path(product: product.id), method: :post, class:"btn btn-primary" %></td>
+                <td><%= link_to 'Agregar', buyer_orders_path(product: product.id), method: :post, class:"btn btn-outline-primary" %></td>
               <% end %>
-              <td><%= link_to '<i class="fa fa-eye fa-2x"></i>'.html_safe, product %><td>
-              <td><%= link_to '<i class="fa fa-edit fa-2x"></i>'.html_safe, edit_product_path(product) %><td>
               <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, product, method: :delete, data: { confirm: 'Are you sure?' } %><td>
             </tr>
           <% end %>
@@ -41,7 +42,7 @@
 
 
   <% if params[:buyer_id].present?%>
-  <button class="btn black btn-lg btn-block fixed-bottom" data-toggle="modal" data-target="#canasta"><%= @cantidad %> | <i class="fa fa-shopping-basket"></i> Ver Canasta | $<%= @total %> | </button>
+  <button class="btn btn-primary btn-lg btn-block fixed-bottom" data-toggle="modal" data-target="#canasta"><%= @cantidad %> | <i class="fa fa-shopping-basket"></i> Ver Canasta | $<%= @total %> | </button>
 
   <div class="modal" id="canasta">
     <div class="bottom white b-t" style="height:90vh">
@@ -88,7 +89,11 @@
               </div>
             </div>
           <% else %>
-            <p>Canasta Vacia</p>
+            <div class="row">
+              <div class="col-12 text-center">
+                <p>Canasta Vacía</p>
+              </div>
+            </div>
           <% end %>
 
         </div>

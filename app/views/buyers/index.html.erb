@@ -1,4 +1,4 @@
-<div id="buyers" class="row justify-content-center ">
+<div id="buyers" class="row justify-content-center">
   <div class="col-sm-11 offset-sm-1 contenedor" style="padding:20px 0">
 
   <h1>Buyers</h1>
@@ -20,7 +20,7 @@
       <div>
         <tr>
           <td><%= image_tag buyer.photo.to_s, class:"foto_cliente" %></td>
-          <td><%= link_to buyer.first_name + ' ' + buyer.last_name, buyer %></td>
+          <td class="clickeable"><%= link_to buyer.first_name + ' ' + buyer.last_name, buyer %></td>
           <td><%= buyer.phone %></td>
           <td class="d-none d-md-block"><%= buyer.email %></td>
           <td><%= link_to 'Vender', buyer_products_path(buyer), class:"btn btn-outline-primary btn-sm" %>

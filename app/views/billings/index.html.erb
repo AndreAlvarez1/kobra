@@ -17,21 +17,15 @@
 
           <tbody>
           <% @billings.each do |billing| %>
-
             <tr>
-              <td>  <%= billing.buyer.first_name %> <%= billing.buyer.last_name %></td>
-              <td>  <%= billing.created_at.strftime(" %d-%m-%y ") %></td>
-              <td>  <%= billing.orders.count %></td>
-              <td>  <%= billing.status %></td>
-              <td>
-                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#<%=billing.id %>" aria-expanded="false" aria-controls="collapseExample">Ver Detalle</button>
-
-                  <%= link_to 'Kobrar', rekobrar_billing_path(billing), method: :patch, class:"btn btn-danger" if billing.notpaid? %>
-                
-              </td>
-
-
-
+                <td>  <%= billing.buyer.first_name %> <%= billing.buyer.last_name %></td>
+                <td>  <%= billing.created_at.strftime(" %d-%m-%y ") %></td>
+                <td>  <%= billing.orders.count %></td>
+                <td>  <%= billing.status %></td>
+                <td>
+                    <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#<%=billing.id %>" aria-expanded="false" aria-controls="collapseExample">Detalle</button>
+                    <%= link_to 'Kobrar', rekobrar_billing_path(billing), method: :patch, class:"btn btn-danger" if billing.notpaid? %>
+                </td>
             </tr>
             <tr>
               <td colspan="5" style="padding:0">
@@ -53,10 +47,10 @@
               </div>
               </td>
             </tr>
+
           <% end %>
-
-
           </tbody>
       </table>
+      
     </div>
 </div>
