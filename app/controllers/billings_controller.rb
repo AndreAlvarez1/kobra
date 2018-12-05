@@ -42,9 +42,9 @@ class BillingsController < ApplicationController
           billing = Billing.create(
           buyer: @buyer,
           payment_id: @payment.id,
+          link: @payment.links.find{|v| v.method == "REDIRECT" }.href
           )
 
-          redirect_url = @payment.links.find{|v| v.method == "REDIRECT" }.href
 
 
           orders.map do |order|
@@ -54,7 +54,7 @@ class BillingsController < ApplicationController
             order.save
           end
 
-          ExampleMailer.sample_email(@buyer,redirect_url,current_seller,billing).deliver
+          ExampleMailer.sample_email(@buyer,billing.link,current_seller,billing).deliver
 
           respond_to do |format|
               format.html {redirect_to billings_path, notice: 'Kobro enviado con exito.'}
@@ -62,6 +62,16 @@ class BillingsController < ApplicationController
         else
           ':('
         end
+  end
+
+  def rekobrar
+    @billing = Billing.find(params[:id])
+    ExampleMailer.sample_email(@billing.buyer,@billing.link,current_seller,@billing).deliver
+
+    respond_to do |format|
+        format.html {redirect_to billings_path, notice: 'Kobro RE-enviado'}
+    end
+
   end
 
 
@@ -92,5 +102,7 @@ class BillingsController < ApplicationController
      end
 
   end
+
+
 
 end

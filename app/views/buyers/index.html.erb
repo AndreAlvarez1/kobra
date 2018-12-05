@@ -20,12 +20,10 @@
       <div>
         <tr>
           <td><%= image_tag buyer.photo.to_s, class:"foto_cliente" %></td>
-          <td><%= buyer.first_name %> <%= buyer.last_name %></td>
+          <td><%= link_to buyer.first_name + ' ' + buyer.last_name, buyer %></td>
           <td><%= buyer.phone %></td>
           <td class="d-none d-md-block"><%= buyer.email %></td>
-          <td> <%= link_to 'Vender', buyer_products_path(buyer), class:"btn" %>
-           <%= link_to '<i class="fa fa-eye fa-lg"></i>'.html_safe, buyer %></td>
-
+          <td><%= link_to 'Vender', buyer_products_path(buyer), class:"btn btn-outline-primary btn-sm" %>
         </tr>
     </div>
       <% end %>

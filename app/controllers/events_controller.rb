@@ -30,7 +30,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to events_path, notice: 'El evento fue creado con exito.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }

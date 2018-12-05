@@ -24,9 +24,13 @@
               <td>  <%= billing.orders.count %></td>
               <td>  <%= billing.status %></td>
               <td>
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#<%=billing.id %>" aria-expanded="false" aria-controls="collapseExample">Ver Detalle</button>
-                <button class="btn btn-success" type="button" >Kobrar</button>
+                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#<%=billing.id %>" aria-expanded="false" aria-controls="collapseExample">Ver Detalle</button>
+
+                  <%= link_to 'Kobrar', rekobrar_billing_path(billing), method: :patch, class:"btn btn-danger" if billing.notpaid? %>
+                
               </td>
+
+
 
             </tr>
             <tr>

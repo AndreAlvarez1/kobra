@@ -17,6 +17,9 @@ Rails.application.routes.draw do
       get 'pre_pay'
       get 'execute/:buyer_id', to: 'billings#execute'
     end
+    member do
+      patch 'rekobrar'
+    end
   end
 
   devise_for :sellers, controllers: {
