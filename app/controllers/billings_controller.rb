@@ -46,9 +46,7 @@ class BillingsController < ApplicationController
           link: @payment.links.find{|v| v.method == "REDIRECT" }.href
           )
 
-
-
-          orders.map do |order|
+            orders.map do |order|
             order.status = 1
             order.payment_id = @payment.id
             order.billing_id = billing.id
@@ -75,6 +73,16 @@ class BillingsController < ApplicationController
 
   end
 
+
+  def paid
+    billing = Billing.find(params[:id])
+    billing.update(status: 1)
+
+    respond_to do |format|
+        format.html {redirect_to billings_path, notice: 'Billing pagado.'}
+    end
+
+  end
 
 
   def execute

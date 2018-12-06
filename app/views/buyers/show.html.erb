@@ -58,6 +58,8 @@
                 <td>
                       <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#<%=billing.id %>" aria-expanded="false" aria-controls="collapseExample">Detalle</button>
                       <%= link_to 'Kobrar', rekobrar_billing_path(billing), method: :patch, class:"btn btn-danger" if billing.notpaid? %>
+                      <%= link_to 'Pagar', paid_billing_path(billing), method: :patch, class:"btn btn-warning" if billing.notpaid? %>
+
                 </td>
               </tr>
               <tr>
