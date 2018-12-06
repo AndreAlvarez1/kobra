@@ -17,15 +17,24 @@
 
 
 
+
+
 <div id="buyerBillings" class="row justify-content-center ">
   <div class="col-sm-11 offset-sm-1 contenedor" style="padding:20px 0">
+
+
+
+
+
+
 
     <div class="row">
       <div class="col-md-2"><h1>Kobros</h1></div>
       <div class="col-md-4"><%= link_to 'Vender', buyer_products_path(@buyer), class:"btn btn-block btn-outline-primary btn-sm" %></div>
     </div>
 
-
+    <% if @pending.count > 0 %>
+        <% @pending.each do |billing| %>
 
     <table id="billingsTable" class="table table-striped table-hover table-responsive-md ">
       <thead>
@@ -40,39 +49,40 @@
       </thead>
 
       <tbody>
-      <% @buyer.billings.each do |billing| %>
-
-        <tr>
-          <td>  <%= billing.id %></td>
-          <td>  <%= billing.buyer.first_name %> <%= billing.buyer.last_name %></td>
-          <td>  <%= billing.created_at.strftime(" %d-%m-%y ") %></td>
-          <td>  <%= billing.orders.count %></td>
-          <td>  <%= billing.status %></td>
-          <td>
-                <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#<%=billing.id %>" aria-expanded="false" aria-controls="collapseExample">Detalle</button>
-                <%= link_to 'Kobrar', rekobrar_billing_path(billing), method: :patch, class:"btn btn-danger" if billing.notpaid? %>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="6" style="padding:0">
-            <div class="collapse" id="<%=billing.id%>">
-              <div class="card card-body">
-                <table class="table table-hover table-responsive-md ">
-                  <tbody>
-                    <% billing.orders.each do |order| %>
-                    <tr>
-                      <td><%= order.product.name%></td>
-                      <td><%= number_to_currency(order.product.price, precision: 0, seperator: ",", delimiter: ".")%></td>
-                      <td><%= order.created_at.strftime(" %d-%m-%y ")%></td>
-                    </tr>
-                    <% end %>
-                  </tbody>
-                </table>
-              </div>
-          </div>
-          </td>
-        </tr>
-      <% end %>
+              <tr>
+                <td>  <%= billing.id %></td>
+                <td>  <%= billing.buyer.first_name %> <%= billing.buyer.last_name %></td>
+                <td>  <%= billing.created_at.strftime(" %d-%m-%y ") %></td>
+                <td>  <%= billing.orders.count %></td>
+                <td>  <%= billing.status %></td>
+                <td>
+                      <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#<%=billing.id %>" aria-expanded="false" aria-controls="collapseExample">Detalle</button>
+                      <%= link_to 'Kobrar', rekobrar_billing_path(billing), method: :patch, class:"btn btn-danger" if billing.notpaid? %>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" style="padding:0">
+                  <div class="collapse" id="<%=billing.id%>">
+                    <div class="card card-body">
+                      <table class="table table-hover table-responsive-md ">
+                        <tbody>
+                          <% billing.orders.each do |order| %>
+                          <tr>
+                            <td><%= order.product.name%></td>
+                            <td><%= number_to_currency(order.product.price, precision: 0, seperator: ",", delimiter: ".")%></td>
+                            <td><%= order.created_at.strftime(" %d-%m-%y ")%></td>
+                          </tr>
+                          <% end %>
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+                </td>
+              </tr>
+            <% end %>
+            <% else %>
+              <%= render "shared/sinkobros" %>
+            <% end %>
 
 
       </tbody>

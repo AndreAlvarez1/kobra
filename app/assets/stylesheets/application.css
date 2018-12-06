@@ -57,11 +57,21 @@ td{
     text-align: center;
 }
 
+.buscador{
+background-color: #07376e;
+color:white;
+padding: 30px 0;
+}
+
+
 .contenedor{
   background-color: white;
   margin: 10px;
   padding:20px 0;
 
+}
+.pad_izq{
+  padding-left:20px;
 }
 
 .clickeable{

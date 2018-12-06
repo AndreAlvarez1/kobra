@@ -3,7 +3,8 @@ class BillingsController < ApplicationController
 
   def index
     @seller = current_seller
-    @billings = @seller.billings
+    @search = @seller.billings.search(params[:q])
+    @billings = @search.result.includes(:buyer)
   end
 
 

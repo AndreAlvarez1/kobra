@@ -8,5 +8,6 @@ class Product < ApplicationRecord
 
   enum category: [:producto, :servicio]
 
+  
 
 end

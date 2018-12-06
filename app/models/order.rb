@@ -5,4 +5,5 @@ class Order < ApplicationRecord
 
   enum status: [:onbascket, :notpaid, :paid, :cancel]
 
+
 end

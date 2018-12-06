@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   def index
     @seller = current_seller
     @orders = @seller.orders
+
   end
 
   def new

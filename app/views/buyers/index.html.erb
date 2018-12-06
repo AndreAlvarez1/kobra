@@ -2,6 +2,8 @@
   <div class="col-sm-11 offset-sm-1 contenedor" style="padding:20px 0">
 
   <h1>Buyers</h1>
+
+
   <table id="buyersTable" class="table table-striped table-hover table-responsive-md display ">
     <thead>
       <tr>
@@ -9,6 +11,7 @@
         <th>Nombre</th>
         <th>Celular</th>
         <th class="d-none d-md-block">Email</th>
+        <th>Kobros Pendientes</th>
         <th></th>
 
       </tr>
@@ -23,6 +26,7 @@
           <td class="clickeable"><%= link_to buyer.first_name + ' ' + buyer.last_name, buyer %></td>
           <td><%= buyer.phone %></td>
           <td class="d-none d-md-block"><%= buyer.email %></td>
+          <td><%= buyer.billings.notpaid.count %></td>
           <td><%= link_to 'Vender', buyer_products_path(buyer), class:"btn btn-outline-primary btn-sm" %>
         </tr>
     </div>
