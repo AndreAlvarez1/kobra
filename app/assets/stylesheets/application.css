@@ -58,7 +58,7 @@ td{
 }
 
 .buscador{
-background-color: #07376e;
+background-color: #11212d;
 color:white;
 padding: 30px 0;
 }
@@ -72,6 +72,10 @@ padding: 30px 0;
 }
 .pad_izq{
   padding-left:20px;
+}
+
+.mar_izq{
+  margin-left:20px;
 }
 
 .clickeable{
@@ -100,6 +104,14 @@ color:white;
   width: 20%;
 }
 
+.logo2{
+  width: 200px;
+}
+
+.logo3{
+  margin-top: 200px;
+}
+
 .container{
   padding-top: 20px;
   background-color: white;
@@ -109,11 +121,14 @@ color:white;
   background-color: #52bf90;
 }
 
-.serpientes{
+.serpientes, .kobritas{
   height: 100vh;
   background-image: url("fondo1.svg");
   border: 2px solid white;
+}
 
+.kobritas{
+  background-image: url("kobritas.png");
 }
 
 .foto_cliente{
@@ -155,6 +170,19 @@ color:white;
 
 #canasta p{
   margin: 0;
+}
+
+.fondo_log{
+  background-color: #11212d;
+  color:white;
+  height: 100vh;
+  padding: 120px 0;
+}
+
+.fondo_reg{
+  background-color: #11212d;
+  color:white;
+  padding: 80px 0;
 }
 
 @media (min-width: 576px) {

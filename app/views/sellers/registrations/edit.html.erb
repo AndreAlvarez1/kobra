@@ -1,73 +1,86 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row justify-content-center fondo_reg">
+  <div class="col-8 col-md-4"
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="row form">
+        <div class="col-md-12">
+          <%= image_tag 'k_logo_blanco.svg', class:"logo2" %>
+        </div>
+          <div class="col-md-12">
+              <h2>Editar</h2>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true%>
+                <div class="field">
+                  <%= f.label :first_name %><br />
+                  <%= f.text_field :first_name, autofocus: true, class:"form-control"%>
+                </div>
+
+                <div class="field">
+                  <%= f.label :last_name %><br />
+                  <%= f.text_field :last_name, class:"form-control" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :rut %><br />
+                  <%= f.text_field :rut, class:"form-control" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :phone %><br />
+                  <%= f.text_field :phone, class:"form-control" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :transbank %><br />
+                  <%= f.text_field :transbank, class:"form-control" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :business_type %><br />
+                  <%= f.text_field :business_type, class:"form-control" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+                </div>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+
+                <div class="field">
+                  <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+                  <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+                  <% if @minimum_password_length %>
+                    <br />
+                    <em><%= @minimum_password_length %> characters minimum</em>
+                  <% end %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :password_confirmation %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                  <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control" %>
+                </div>
+
+                <div class="actions">
+                  <%= f.submit "Update", class:"btn btn-success" %>
+                </div>
+              <% end %>
+
+              <h3>Cancel my account</h3>
+
+              <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+              <%= link_to "Back", :back %>
+
+           </div>
+      </div>
+
   </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :rut %><br />
-    <%= f.text_field :rut %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= f.label :transbank %><br />
-    <%= f.text_field :transbank %>
-  </div>
-
-  <div class="field">
-    <%= f.label :business_type %><br />
-    <%= f.text_field :business_type %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

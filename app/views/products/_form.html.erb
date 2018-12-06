@@ -1,5 +1,13 @@
 <%= form_with(model: product, local: true) do |form| %>
 
+<div class="row">
+<div class="col-10 col-md-6">
+</div>
+</div>
+
+
+<div class="row pad_izq">
+<div class="col-10 col-md-6">
   <% if product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -12,25 +20,24 @@
     </div>
   <% end %>
 
-
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class:"form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :detail %>
-    <%= form.text_area :detail %>
+    <%= form.text_area :detail, class:"form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :price %>
-    <%= form.number_field :price %>
+    <%= form.number_field :price, class:"form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :category %>
-    <%= form.select :category, Product.categories.keys.to_a %>
+    <%= form.select :category, Product.categories.keys.to_a, class:"form-control" %>
   </div>
 
 
@@ -38,6 +45,11 @@
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-success" %>
   </div>
 <% end %>
+
+
+
+</div>
+</div>
