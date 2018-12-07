@@ -28,7 +28,7 @@
     </div>
 
     <% if @pending.count > 0 %>
-        <% @pending.each do |billing| %>
+
 
     <table id="billingsTable" class="table table-striped table-hover ">
       <thead>
@@ -41,7 +41,7 @@
           <th></th>
         </tr>
       </thead>
-
+      <% @pending.each do |billing| %>
       <tbody>
               <tr>
                 <td>  <%= billing.id %></td>
