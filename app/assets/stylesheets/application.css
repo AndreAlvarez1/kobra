@@ -78,6 +78,16 @@ padding: 30px 0;
   margin-left:20px;
 }
 
+.mar_top{
+  margin-top: 10px;
+}
+
+.nomargen{
+  margin: 0;
+}
+
+
+
 .clickeable{
   color:black;
 }
@@ -123,12 +133,12 @@ color:white;
 
 .serpientes, .kobritas{
   height: 100vh;
-  background-image: url("fondo1.svg");
+  background-image: url("http://www.andrealvarez.com/kobra/fondo1.svg");
   border: 2px solid white;
 }
 
 .kobritas{
-  background-image: url("kobritas.png");
+  background-image: url("http://www.andrealvarez.com/kobra/kobritas.png");
 }
 
 .foto_cliente{
@@ -185,6 +195,10 @@ color:white;
   padding: 80px 0;
 }
 
+.fc-content{
+  color:white;
+}
+
 @media (min-width: 576px) {
 
 }
@@ -192,6 +206,10 @@ color:white;
 @media (min-width: 768px) {
   .logo{
     width: 10%;
+  }
+
+  .mar_top{
+    margin-top: 0;
   }
 
 }
