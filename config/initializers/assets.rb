@@ -10,7 +10,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.paths << Rails.root.join('vendor')
 Rails.application.config.assets.paths << Rails.root.join('vendor/assets/stylesheets')
 Rails.application.config.assets.paths << Rails.root.join('vendor/assets/javascript')
-Rails.application.config.assets.paths << Rails.root.join('app/assets/images')
 Rails.application.config.assets.paths << Rails.root.join('vendor/assets/images')
 
 # Precompile additional assets.
@@ -19,3 +18,4 @@ Rails.application.config.assets.paths << Rails.root.join('vendor/assets/images')
 Rails.application.config.assets.precompile += %w( *.jpg )
 Rails.application.config.assets.precompile += %w( *.png )
 Rails.application.config.assets.precompile += %w( *.svg )
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|tff)\z/
