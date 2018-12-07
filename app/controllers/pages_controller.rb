@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_seller!, except:[:index,:succes]
+  before_action :authenticate_seller!, except:[:index,:success]
 
   def index
   end
@@ -14,5 +14,5 @@ class PagesController < ApplicationController
   end
 
   def success
-  end  
+  end
 end
