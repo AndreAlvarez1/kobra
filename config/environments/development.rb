@@ -59,6 +59,14 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.after_initialize do
+  Bullet.enable = true
+  Bullet.bullet_logger = true
+  Bullet.console = true
+  Bullet.rails_logger = true
+  Bullet.add_footer = true
+  end
+
 
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
