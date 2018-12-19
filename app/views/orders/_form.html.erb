@@ -1,0 +1,20 @@
+<%= form_with(model: order, local: true) do |form| %>
+
+
+
+<div class="row pad_izq">
+  <div class="col-10 col-md-6">
+
+        <div class="field">
+          <%= form.label :price %>
+          <%= form.number_field :price, class:"form-control" %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit :submit, class:"btn btn-success" %>
+        </div>
+
+      <% end %>
+
+  </div>
+</div>

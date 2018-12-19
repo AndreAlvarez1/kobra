@@ -5,20 +5,19 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @seller = current_seller
+
     if params[:buyer_id].present?
       @buyer = Buyer.find(params[:buyer_id])
       @orders = Order.where(buyer_id: @buyer.id, status: 0)
       @cantidad = @orders.length
       @total = 0
       @orders.each do |order|
-        @total += order.product.price
+        @total += order.price
       end
     end
 
     @products = @seller.products
-
-
-
+    
   end
 
   # GET /products/1
