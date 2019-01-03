@@ -65,15 +65,44 @@
                 <div class="col-12" style="overflow: scroll;height: calc(90vh - 150px);">
                   <table class="table table-hover">
                     <% @orders.each do |order| %>
+
                     <tr>
                       <td><%= order.product.name%></td>
-                      <td><%= number_to_currency(order.price, precision: 0, seperator: ",", delimiter: ".")%></td>
+                      <td>
+                          <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#<%=order.id %>" aria-expanded="false" aria-controls="collapseExample">
+                            <%= number_to_currency(order.price, precision: 0, seperator: ",", delimiter: ".")%>
+                          </button>
+                      </td>
                       <td><%= order.created_at.strftime(" %d-%m-%y ")%></td>
-                      <td><%= link_to 'Edit', edit_order_path(order) %></td>
-                      <td><button class="btn white" data-toggle="modal" data-target="#user" ui-toggle-class="modal-open-aside" ui-target="body">Right</button></td>
-
                       <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, order, method: :delete, data: { confirm: 'Seguro?' } %><td>
                     <tr>
+
+                    <tr>
+                      <td colspan="6" style="padding:0">
+                        <div class="collapse" id="<%=order.id%>">
+                          <div class="card card-body">
+                              <div class="row">
+                                  <div class="col-3 col-md-2">
+                                      <p>Cambiar precio:</p>
+                                  </div>
+                                  <div class="col-2">
+                                    <%= form_with(model: order, local: true) do |form| %>
+                                           <div class="field">
+                                              <%= form.number_field :price, class:"form-control" %>
+                                            </div>
+                                  </div>
+                                  <div class="col-3 col-md-2">
+                                            <div class="actions">
+                                              <%= form.button :submit  => "Guardar", class:"btn btn-success" %>
+                                            </div>
+                                    <% end %>
+                                  </div>
+                                </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
                     <% end %>
 
                   </table>
@@ -81,11 +110,7 @@
                 </div>
           </div>
 
-          <div class="modal fade inactive" id="user" data-backdrop="false" style="display: none;" aria-hidden="true">
-            <div class="right w-xl white b-l">
-              <div class="row-col"><a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">×</a><div class="p-a b-b"><span class="h5">Members</span></div><div class="row-row"><div class="row-body"><div class="row-inner"><div class="list-group no-radius no-borders"><a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><img src="../assets/images/a1.jpg" class="pull-left w-40 m-r img-circle"><div class="clear"><span class="font-bold block">Jonathan Doe</span> <span class="clear text-ellipsis text-xs">"Hey, What's up"</span></div></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><img src="../assets/images/a2.jpg" class="pull-left w-40 m-r img-circle"><div class="clear"><span class="font-bold block">James Pill</span> <span class="clear text-ellipsis text-xs">"Lorem ipsum dolor sit amet onsectetur adipiscing elit"</span></div></a><div class="p-x-md m-t p-v-xs">Work</div><a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-success text-xs m-r-xs"></i> <span>Jonathan Morina</span></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-success text-xs m-r-xs"></i> <span>Mason Yarnell</span></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-warning text-xs m-r-xs"></i> <span>Mike Mcalidek</span></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-muted text-xs m-r-xs"></i> <span>Cris Labiso</span></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-muted text-xs m-r-xs"></i> <span>Daniel Sandvid</span></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-muted text-xs m-r-xs"></i> <span>Helder Oliveira</span></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-muted text-xs m-r-xs"></i> <span>Jeff Broderik</span></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-muted text-xs m-r-xs"></i> <span>Daniel Sandvid</span></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-muted text-xs m-r-xs"></i> <span>Helder Oliveira</span></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-muted text-xs m-r-xs"></i> <span>Jeff Broderik</span></a><div class="p-x-md m-t p-v-xs">Partner</div><a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-success text-xs m-r-xs"></i> <span>Mason Yarnell</span></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-warning text-xs m-r-xs"></i> <span>Mike Mcalidek</span></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-muted text-xs m-r-xs"></i> <span>Cris Labiso</span></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-muted text-xs m-r-xs"></i> <span>Jonathan Morina</span></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-muted text-xs m-r-xs"></i> <span>Daniel Sandvid</span></a> <a data-toggle="modal" data-target="#chat" data-dismiss="modal" class="list-group-item p-x-md"><i class="fa fa-circle text-muted text-xs m-r-xs"></i> <span>Helder Oliveira</span></a></div></div></div></div><div class="p-a b-t"><a href="" class="text-muted"><i class="fa fa-fw fa-twitter"></i> Twitter</a> <a href="" class="text-muted m-h"><i class="fa fa-fw fa-facebook"></i> Facebook</a></div></div>
-            </div>
-          </div>
+
 
 
 

@@ -26,11 +26,10 @@ class OrdersController < ApplicationController
 
 
   def destroy
-    @buyer = Buyer.find(params[:buyer_id])
     @order = Order.find(params[:id])
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'La orden fue eliminada con exito.' }
+      format.html { redirect_to request.referrer, notice: 'La orden fue eliminada con exito.' }
       format.json { head :no_content }
     end
   end
@@ -40,7 +39,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to orders_url, notice: 'El precio fue modificado con exito.' }
+        format.html { redirect_to request.referrer, notice: 'El precio fue modificado con exito.' }
       else
         format.html { render :edit }
         format.json { render json: @order.errors, status: :unprocessable_entity }
