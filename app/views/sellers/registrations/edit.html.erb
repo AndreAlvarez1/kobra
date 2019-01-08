@@ -1,12 +1,12 @@
-<div class="row justify-content-center fondo_reg">
-  <div class="col-8 col-md-4"
+<div class="row edit fondo_reg">
+  <div class="col-12">
 
-      <div class="row form">
-        <div class="col-md-12">
-          <%= image_tag 'k_logo_blanco.svg', class:"logo2" %>
-        </div>
-          <div class="col-md-12">
-              <h2>Editar</h2>
+      <div class="row form justify-content-center">
+
+
+        <div class=" col-10 offset-1 col-md-4 border_blanco padding" >
+              <h3>Datos Personales</h3>
+              <p>Aqui puedes editar tu perfil</p>
               <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
                 <%= devise_error_messages! %>
 
@@ -31,11 +31,6 @@
                 </div>
 
                 <div class="field">
-                  <%= f.label :transbank %><br />
-                  <%= f.text_field :transbank, class:"form-control" %>
-                </div>
-
-                <div class="field">
                   <%= f.label :business_type %><br />
                   <%= f.text_field :business_type, class:"form-control" %>
                 </div>
@@ -50,11 +45,11 @@
                 <% end %>
 
                 <div class="field">
-                  <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+                  <%= f.label :password %> <i>(Deja este campo en blanco si no quieres cambiar tu password)</i><br />
                   <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
                   <% if @minimum_password_length %>
                     <br />
-                    <em><%= @minimum_password_length %> characters minimum</em>
+                    <em><%= @minimum_password_length %> caracteres mínimo</em>
                   <% end %>
                 </div>
 
@@ -63,24 +58,72 @@
                   <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
                 </div>
 
+            </div><!--fin columna datos personales-->
+
+            <div class="col-10 offset-1 col-md-4 border_blanco">
+                <h3>Datos Bancarios</h3>
+                <p>Ingrese los datos para que sus clientes sepan donde depositar</p>
+
                 <div class="field">
-                  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-                  <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control" %>
+                  <%= f.label "rut" %><br />
+                  <%= f.text_field :accountrut,  class:"form-control", placeholder: 'Ingrese rut'%>
+                </div>
+
+                <div class="field">
+                  <%= f.label "Nombre" %><br />
+                  <%= f.text_field :account,  class:"form-control"%>
+                </div>
+
+                <div class="field">
+                  <%= f.label "Banco" %><br />
+                  <%= f.select :bank, Seller.banks.keys.to_a, class:"form-control"%>
+                </div>
+
+                <div class="field">
+                  <%= f.label "Tipo de Cuenta" %><br />
+                  <%= f.select :accounttype, Seller.accounttypes.keys.to_a,  class:"form-control"%>
+                </div>
+
+                <div class="field">
+                  <%= f.label "Nº de Cuenta" %><br />
+                  <%= f.text_field :accountnumber,  class:"form-control", placeholder: 'Ingrese número de cuenta sin puntos ni guiones'%>
+                </div>
+
+                <div class="field">
+                  <%= f.label :transbank %><br />
+                  <%= f.text_field :transbank, class:"form-control", placeholder: "No llenar aun" %>
+                </div>
+
+            </div><!-- fin columna datos bancarios-->
+
+          </div>
+
+
+
+
+          <div class="row justify-content-center" >
+            <div class="col-10 col-md-6">
+
+                <div class="field" style="margin: 20px 0">
+                  <h3 style="margin:0">Guardar cambios</h3>
+                  <p>Ingresa tu password actual para guardar los cambios</p>
+                  <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control", placeholder: "(Ingreso tu password actual para guardar los cambios)" %>
                 </div>
 
                 <div class="actions">
-                  <%= f.submit "Update", class:"btn btn-success" %>
+                  <%= f.submit "Guardar", class:"btn btn-block btn-success" %>
                 </div>
               <% end %>
 
-              <h3>Cancel my account</h3>
-
-              <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+              <div class="mar20">
+                <h2 class>Cancelar mi Cuenta</h2>
+                <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Estás segur@?" }, method: :delete %>
+              </div>
 
               <%= link_to "Back", :back %>
 
            </div>
-      </div>
+          </div>
 
   </div>
 </div>
