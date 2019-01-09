@@ -9,8 +9,9 @@
         Hola <%= @user.first_name %> <%= @user.last_name %>
       </h1>
       <p style="font-family:Arial, sans-serif; margin-left:20px">Aquí el detalle de los items por pagar a <%= @seller.first_name %> <%= @seller.last_name %></p>
-      <p style="font-family:Arial, sans-serif; margin-left:20px">Puedes pagar directamente haciendo click en el botón más abajo</p>
       <p style="font-family:Arial, sans-serif; margin-left:20px">ID Kobro: #<%= @billing.id %> | Emitido el: <%= @billing.created_at.strftime(" %d-%m-%y ") %></p>
+
+
 
       <table style="width:100%">
         <tbody>
@@ -18,22 +19,40 @@
           <tr>
             <td style=" padding: 0.75rem;
                         vertical-align: top;
-                        border-top: 1px solid #dee2e6;">
+                        border-top: 1px solid #dee2e6;
+                        font-size: 13px;
+                        font-family:Arial, sans-serif">
                         <%= order.product.name%>
             </td>
 
             <td style=" padding: 0.75rem;
                         vertical-align: top;
-                        border-top: 1px solid #dee2e6;">
+                        border-top: 1px solid #dee2e6;
+                        font-size: 13px;
+                        font-family:Arial, sans-serif">
               <%= number_to_currency(order.product.price, precision: 0, seperator: ",", delimiter: ".")%>
             </td>
           </tr>
           <% end %>
+          <tr>
+            <td>
+             total: <%=number_to_currency(@billing.orders.pluck('price').sum(), precision: 0, seperator: ",", delimiter: ".") %>
+             <td>
+          </tr>
         </tbody>
       </table>
 
-      <div style="text-align:center; border-top:1px solid grey;padding-top:50px">
-        <a style="color:rgb(255,255,255);font-family:Arial; sans-serif;display:inline-block;background-color:rgb(233,80,29);border:1px solid rgb(233,80,29);border-radius:5px;box-sizing:border-box;text-decoration:none;font-size:14px;font-weight:bold;margin:0px;padding:12px 25px;text-transform:capitalize" href="<%= @link %>">Pagar aquí</a>
+      <div style="width:100%;border-bottom:10px solid #F5F5F5;margin:30px 0"></div>
+
+
+      <div style="text-align:center;color:grey;padding:10px">
+        <h2 style="font-family:Arial, sans-serif; margin-left:20px;font-size:1.1em">Puedes pagar haciendo una transferencia con los siguentes datos:</h2>
+        <p style="font-family:Arial, sans-serif; margin-left:20px;font-size:0.9em"><span style="font-weight:bold">Nombre Cuenta:</span> <%=@seller.account %></p>
+        <p style="font-family:Arial, sans-serif; margin-left:20px;font-size:0.9em"><span style="font-weight:bold">Rut:</span> <%=@seller.accountrut %></p>
+        <p style="font-family:Arial, sans-serif; margin-left:20px;font-size:0.9em"><span style="font-weight:bold">Banco:</span> <%=@seller.bank %></p>
+        <p style="font-family:Arial, sans-serif; margin-left:20px;font-size:0.9em"><span style="font-weight:bold">Tipo de Cuenta:</span> <%=@seller.accounttype %></p>
+        <p style="font-family:Arial, sans-serif; margin-left:20px;font-size:0.9em"><span style="font-weight:bold">Nº de Cuenta:</span> <%=@seller.accountnumber %></p>
+        <p style="font-family:Arial, sans-serif; margin-left:20px;font-size:0.9em"><span style="font-weight:bold">Mail:</span> <%=@seller.email %></p>
       </div>
 
     </div>
