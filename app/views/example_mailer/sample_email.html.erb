@@ -25,7 +25,8 @@
                         <%= order.product.name%>
             </td>
 
-            <td style=" padding: 0.75rem;
+            <td style=" text-align:right;
+                        padding: 0.75rem;
                         vertical-align: top;
                         border-top: 1px solid #dee2e6;
                         font-size: 13px;
@@ -35,12 +36,15 @@
           </tr>
           <% end %>
           <tr>
-            <td style=" padding: 0.75rem;
+            <td colspan="2"
+                style=" text-align:right;
+                        padding: 0.75rem;
                         vertical-align: top;
                         border-top: 1px solid #dee2e6;
+                        color:grey;
                         font-size: 23px;
                         font-weight: bold;
-                        font-family:Arial, sans-serif">
+                        font-family:Arial, sans-serif;">
              Cuenta Total: <%=number_to_currency(@billing.orders.pluck('price').sum(), precision: 0, seperator: ",", delimiter: ".") %>
              <td>
           </tr>
