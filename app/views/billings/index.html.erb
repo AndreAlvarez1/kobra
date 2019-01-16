@@ -23,6 +23,7 @@
         <div class="form-group col-md-2">
           <%= f.label :status_cont, "Estado" %>
           <%= f.select :status_cont, [0,1,2], :prompt => "Todos", class:"form-control" %>
+
         </div>
       </div>
 
@@ -46,7 +47,7 @@
             <tr>
               <th><%=sort_link @search, :buyer_first_name, "Cliente" %></th>
               <th><%=sort_link @search, :created_at, "Creado" %></th>
-              <th>#</th>
+              <th>Total</th>
               <th><%=sort_link @search, :status, "Status" %></th>
               <th></th>
             </tr>
@@ -57,7 +58,8 @@
             <tr>
                 <td>  <%= billing.buyer.first_name %> <%= billing.buyer.last_name %></td>
                 <td>  <%= billing.created_at.strftime(" %d-%m-%y ") %></td>
-                <td>  <%= billing.orders.count %></td>
+                <td>  <%= number_to_currency(billing.orders.pluck('price').sum(), precision: 0, seperator: ",", delimiter: ".")
+ %></td>
                 <td>  <%= billing.status %></td>
                 <td>
                     <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#<%=billing.id %>" aria-expanded="false" aria-controls="collapseExample">Detalle</button>
@@ -75,7 +77,7 @@
                         <tr>
                           <td><%= order.id%></td>
                           <td><%= order.product.name%></td>
-                          <td><%= number_to_currency(order.product.price, precision: 0, seperator: ",", delimiter: ".")%></td>
+                          <td><%= number_to_currency(order.price, precision: 0, seperator: ",", delimiter: ".")%></td>
                           <td><%= order.created_at.strftime(" %d-%m-%y ")%></td>
                         </tr>
                         <% end %>

@@ -30,13 +30,18 @@
                         border-top: 1px solid #dee2e6;
                         font-size: 13px;
                         font-family:Arial, sans-serif">
-              <%= number_to_currency(order.product.price, precision: 0, seperator: ",", delimiter: ".")%>
+              <%= number_to_currency(order.price, precision: 0, seperator: ",", delimiter: ".")%>
             </td>
           </tr>
           <% end %>
           <tr>
-            <td>
-             total: <%=number_to_currency(@billing.orders.pluck('price').sum(), precision: 0, seperator: ",", delimiter: ".") %>
+            <td style=" padding: 0.75rem;
+                        vertical-align: top;
+                        border-top: 1px solid #dee2e6;
+                        font-size: 23px;
+                        font-weight: bold;
+                        font-family:Arial, sans-serif">
+             Cuenta Total: <%=number_to_currency(@billing.orders.pluck('price').sum(), precision: 0, seperator: ",", delimiter: ".") %>
              <td>
           </tr>
         </tbody>

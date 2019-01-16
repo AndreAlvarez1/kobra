@@ -4,6 +4,7 @@ class BillingsController < ApplicationController
   def index
     @seller = current_seller
     @search = @seller.billings.search(params[:q])
+    @search.sorts = 'created_at desc' if @search.sorts.empty?
     @billings = @search.result.includes(:buyer)
   end
 
