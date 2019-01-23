@@ -67,6 +67,7 @@ Rails.application.configure do
   Bullet.add_footer = true
   end
 
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
