@@ -16,7 +16,6 @@
           <tr>
             <th>Producto</th>
             <th></th>
-            <th>Detalle</th>
             <th>Precio</th>
             <% if params[:buyer_id].present?%>
               <th></th>
@@ -27,14 +26,14 @@
 
         <tbody>
           <% @products.each do |product| %>
-            <tr onclick="location.href='<%= product_path(product) %>'">
+          <tr onclick="location.href='<%= product_path(product) %>'">
               <td class="clickeable"><%= link_to product.name, product %><td>
-              <td><%= product.detail %></td>
               <td><%= number_to_currency(product.price, precision: 0, seperator: ",", delimiter: ".")%></td>
               <% if params[:buyer_id].present?%>
-                <td><%= link_to 'Agregar', buyer_orders_path(product: product.id), method: :post, class:"btn btn-outline-primary" %></td>
-              <% end %>
-              <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, product, method: :delete, data: { confirm: 'Are you sure?' } %><td>
+                    <td><%= link_to 'Agregar', buyer_orders_path(product: product.id), method: :post, class:"btn btn-outline-primary" %></td>
+              <% else %>
+                  <td><%= link_to '<i class="fas fa-trash fa-lg"></i>'.html_safe, product, method: :delete, data: { confirm: 'Are you sure?' } %><td>
+                <% end %>
             </tr>
           <% end %>
         </tbody>
@@ -42,7 +41,7 @@
 
 
   <% if params[:buyer_id].present?%>
-  <button class="btn btn-primary btn-lg btn-block fixed-bottom" data-toggle="modal" data-target="#canasta"><%= @cantidad %> | <i class="fa fa-shopping-basket"></i> Ver Canasta | $<%= @total %> | </button>
+  <button class="btn btn-primary btn-lg btn-block fixed-bottom" data-toggle="modal" data-target="#canasta"><%= @cantidad %> | <i class="fas fa-shopping-basket"></i> Ver Canasta | $<%= @total %> | </button>
 
   <div class="modal" id="canasta">
     <div class="bottom white b-t" style="height:90vh">
@@ -55,7 +54,7 @@
               <div class="col-8 col-md-10">
                 <p>Canasta de</p>
                 <span class="h5"><%= @buyer.first_name + ' ' + @buyer.last_name  %></span>
-                <p>Total: $<%= @total %></p>
+                <p>Total: <%= number_to_currency(@total, precision: 0, seperator: ",", delimiter: ".") %></p>
               </div>
               <div class="col-1 col-md-1">
                 <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">×</a>
@@ -74,7 +73,7 @@
                           </button>
                       </td>
                       <td><%= order.created_at.strftime(" %d-%m-%y ")%></td>
-                      <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, order, method: :delete, data: { confirm: 'Seguro?' } %><td>
+                      <td><%= link_to '<i class="fas fa-trash fa-lg"></i>'.html_safe, order, method: :delete, data: { confirm: 'Seguro?' } %></td>
                     <tr>
 
                     <tr>
@@ -85,7 +84,7 @@
                                   <div class="col-3 col-md-2">
                                       <p>Cambiar precio:</p>
                                   </div>
-                                  <div class="col-2">
+                                  <div class="col-5">
                                     <%= form_with(model: order, local: true) do |form| %>
                                            <div class="field">
                                               <%= form.number_field :price, class:"form-control" %>

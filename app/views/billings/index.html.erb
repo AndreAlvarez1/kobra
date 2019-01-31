@@ -60,14 +60,13 @@
                 <td>  <%= billing.created_at.strftime(" %d-%m-%y ") %></td>
                 <td>  <%= number_to_currency(billing.orders.pluck('price').sum(), precision: 0, seperator: ",", delimiter: ".")%></td>
                 <td>  <%= billing.status %></td>
-                <td>
-                    <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#<%=billing.id %>" aria-expanded="false" aria-controls="collapseExample">Detalle</button>
-                    <%= link_to 'Kobra', rekobrar_billing_path(billing), method: :patch, class:"btn btn-danger" if billing.notpaid? %>
-                    <%= link_to 'Pagar', paid_billing_path(billing), method: :patch, class:"btn btn-warning" if billing.notpaid? %>
-                </td>
+                <td><button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#<%=billing.id %>" aria-expanded="false" aria-controls="collapseExample">Detalle</button></td>
+                <td>    <%= link_to 'Kobra', rekobrar_billing_path(billing), method: :patch, class:"btn btn-danger" if billing.notpaid? %></td>
+                <td>    <%= link_to 'Pagar', paid_billing_path(billing), method: :patch, class:"btn btn-warning" if billing.notpaid? %></td>
+
             </tr>
             <tr>
-              <td colspan="5" style="padding:0">
+              <td colspan="9" style="padding:0">
                 <div class="collapse" id="<%=billing.id%>">
                   <div class="card card-body">
                     <table class="table table-hover table-responsive-md ">
