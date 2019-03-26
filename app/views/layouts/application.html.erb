@@ -22,11 +22,12 @@
 
   </head>
 
-  <body>
+  <body >
         <%= render "layouts/alerts" %>
         <%= render "shared/navbar" %>
-        <%= yield %>
-
+        <div class="animated fadeIn">
+          <%= yield %>
+        <div>
   </body>
 
   <script>

@@ -15,6 +15,7 @@
  *= require font-awesome/css/font-awesome
  *= require dataTables.net-bs4/css/dataTables.bootstrap4
  *= require styles/app
+ *= require animate
  *= require fullcalendar/dist/fullcalendar
  *= require bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.min
  *= require landing
