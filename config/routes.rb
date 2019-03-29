@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     member do
       patch 'rekobrar'
       patch 'paid'
+      patch 'unpaid'
     end
   end
 
