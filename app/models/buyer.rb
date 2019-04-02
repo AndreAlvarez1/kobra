@@ -1,8 +1,8 @@
 class Buyer < ApplicationRecord
   belongs_to :seller
-  has_many :billings
-  has_many :orders
-  has_many :products, through: :orders
+  has_many :billings, :dependent => :delete_all
+  has_many :orders, :dependent => :delete_all
+  has_many :products, through: :orders, :dependent => :delete_all
   mount_uploader :photo, ImageUploader
 
 
