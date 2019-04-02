@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
     end
 
     @products = @seller.products
-    
+
   end
 
   # GET /products/1
@@ -28,6 +28,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    # @origin_route = URI(request.referer).path.to_s[1..6]
   end
 
   # GET /products/1/edit
@@ -39,9 +40,8 @@ class ProductsController < ApplicationController
   def create
     @seller = current_seller
     @product = @seller.products.build(product_params)
+
     @product.save
-
-
     respond_to do |format|
       if @product.save
         format.html { redirect_to products_path, notice: 'Producto creado con exito'}
@@ -51,6 +51,10 @@ class ProductsController < ApplicationController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+
+
+
+
   end
 
   # PATCH/PUT /products/1

@@ -1,7 +1,7 @@
 <div id="billings" class="row justify-content-center animated fadeIn fast">
   <div class="col-sm-11 offset-sm-1 contenedor" style="padding:20px 0">
 
-    <h1>Billings</h1>
+    <h1>Ventas</h1>
     <p class="pad_izq">Resutados búsqueda: <%= @billings.count %></p>
 
 <div class="buscador">
@@ -64,6 +64,7 @@
                     <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#<%=billing.id %>" aria-expanded="false" aria-controls="collapseExample">Detalle</button>
                     <%= link_to 'Kobra', rekobrar_billing_path(billing), method: :patch, class:"btn btn-danger" if billing.notpaid? %>
                     <%= link_to 'Pagar', paid_billing_path(billing), method: :patch, class:"btn btn-warning" if billing.notpaid? %>
+                    <%= link_to 'Deshacer Pago', unpaid_billing_path(billing), method: :patch, class:"btn btn-outline-success" if billing.paid? %>
                 </td>
             </tr>
             <tr>

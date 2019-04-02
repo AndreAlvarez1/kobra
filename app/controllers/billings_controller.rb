@@ -52,6 +52,16 @@ class BillingsController < ApplicationController
 
   end
 
+  def unpaid
+    billing = Billing.find(params[:id])
+    billing.update(status: 0)
+
+    respond_to do |format|
+        format.html {redirect_to billings_path, notice: 'Billing con estado impago'}
+    end
+
+  end
+
 
 
 
