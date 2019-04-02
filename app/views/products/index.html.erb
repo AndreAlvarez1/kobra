@@ -4,7 +4,7 @@
     <div class="animated fadeIn fast">
       <div class="row">
           <div class="col-7 col-md-10">
-            <h1>Products</h1>
+            <h1>Productos<span> o servicios</span></h1>
           </div>
 
           <div class="col-3 col-md-2 ">
@@ -12,35 +12,32 @@
           </div>
       </div>
 
-      <table class="table table-striped table-hover">
+      <table id="productsTable" class="table table-striped table-hover">
         <thead>
           <tr>
             <th>Producto</th>
-            <th></th>
-            <th>Detalle</th>
             <th>Precio</th>
             <% if params[:buyer_id].present?%>
-              <th></th>
+              <th>Boton agregar</th>
             <%end %>
-            <th></th>
+            <th>Borrar</th>
           </tr>
         </thead>
 
         <tbody>
           <% @products.each do |product| %>
             <tr onclick="location.href='<%= product_path(product) %>'">
-              <td class="clickeable"><%= link_to product.name, product %><td>
-              <td><%= product.detail %></td>
+              <td class="clickeable"><%= link_to product.name, product %></td>
               <td><%= number_to_currency(product.price, precision: 0, seperator: ",", delimiter: ".")%></td>
               <% if params[:buyer_id].present?%>
                 <td><%= link_to 'Agregar', buyer_orders_path(product: product.id), method: :post, class:"btn btn-outline-primary" %></td>
               <% end %>
-              <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, product, method: :delete, data: { confirm: 'Are you sure?' } %><td>
+              <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-</div>      
+</div>
 
 
   <% if params[:buyer_id].present?%>
