@@ -34,6 +34,7 @@
               <td><%= number_to_currency(product.price, precision: 0, seperator: ",", delimiter: ".")%></td>
               <% if params[:buyer_id].present?%>
                 <td><%= link_to 'Agregar', buyer_orders_path(product: product.id), method: :post, class:"btn btn-outline-primary" %></td>
+                <td><%= link_to 'Sumar', buyer_orders_add_path(product: product.id), method: :post, class:"btn btn-outline-danger" %></td>
               <% end %>
               <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
@@ -88,16 +89,30 @@
           <div class="row">
                 <div class="col-12" style="overflow: scroll;height: calc(90vh - 150px);">
                   <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Fecha de Ingreso</th>
+                        <th>Total a Kobrar</th>
+                        <th>Borrar</th>
+
+                      </tr>
+                    </thead>
+
                     <% @orders.each do |order| %>
 
                     <tr>
                       <td><%= order.product.name%></td>
+                      <td><%= order.quantity%></td>
                       <td>
                           <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#<%=order.id %>" aria-expanded="false" aria-controls="collapseExample">
                             <%= number_to_currency(order.price, precision: 0, seperator: ",", delimiter: ".")%>
                           </button>
                       </td>
                       <td><%= order.created_at.strftime(" %d-%m-%y ")%></td>
+                      <td><%= number_to_currency(order.total_amount, precision: 0, seperator: ",", delimiter: ".")%></td>
                       <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, order, method: :delete, data: { confirm: 'Seguro?' } %><td>
                     <tr>
 
