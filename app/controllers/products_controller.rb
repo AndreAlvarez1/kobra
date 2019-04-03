@@ -40,11 +40,12 @@ class ProductsController < ApplicationController
   def create
     @seller = current_seller
     @product = @seller.products.build(product_params)
-
+    @url = URI(request.referer).path
     @product.save
     respond_to do |format|
+
       if @product.save
-        format.html { redirect_to products_path, notice: 'Producto creado con exito'}
+        format.html { redirect_to @url, notice: 'Producto creado desde cliente'}
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }

@@ -1,0 +1,43 @@
+<%= form_with(model: Product.new, local: true) do |form| %>
+
+<div class="row">
+<div class="col-10 col-md-6">
+</div>
+</div>
+
+
+<div class="row pad_izq">
+<div class="col-10 col-md-6">
+
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :detail %>
+    <%= form.text_area :detail, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.select :category, Product.categories.keys.to_a, class:"form-control" %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-success" %>
+  </div>
+
+<% end %>
+
+
+
+</div>
+</div>
