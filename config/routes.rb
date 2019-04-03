@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :buyers do
     resources :orders, only: [:create]
+    post 'orders/add'
     resources :products, only: [:index]
 
   end

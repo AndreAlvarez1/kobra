@@ -20,6 +20,15 @@ class OrdersController < ApplicationController
     redirect_to buyer_products_path(params[:buyer_id])
   end
 
+  def add
+    @buyer = Buyer.find(params[:buyer_id])
+    @product = Product.find(params[:product])
+    @order = Order.where(status: 0, product_id: @product.id, buyer_id: @buyer.id).first
+    @order.quantity += 1
+    @order.save
+    redirect_to buyer_products_path(params[:buyer_id])
+  end
+
   def edit
     @order = Order.find(params[:id])
   end

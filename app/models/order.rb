@@ -5,5 +5,9 @@ class Order < ApplicationRecord
 
   enum status: [:onbascket, :notpaid, :paid, :cancel]
 
+  def total_amount
+    quantity*price
+  end
+
 
 end
