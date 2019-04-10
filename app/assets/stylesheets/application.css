@@ -36,6 +36,12 @@ body{
 h1{
   padding-left: 20px;
   font-family: 'Carter One', cursive;
+  font-size: 2.2em;
+}
+
+h2{
+  padding-left: 20px;
+  font-size: 1em;
 }
 
 td{
@@ -219,12 +225,22 @@ span{
   font-size: 0.5em;
 }
 
+.tipoBlanca{
+  color:white;
+}
+
 
 @media (min-width: 576px) {
 
 }
 
 @media (min-width: 768px) {
+  h1{
+    font-size: 2.5em;
+  }
+  h2{
+    font-size: 1em;
+  }
   .logo{
     width: 10%;
   }

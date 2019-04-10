@@ -1,10 +1,10 @@
 <div class="animated fadeIn fast">
 <div class="row buyer">
-  <div class="col-sm-12 col-md-2 center-align">
+  <div class="col-sm-12 col-md-3 col-lg-2 center-align">
     <%= image_tag @buyer.photo.to_s, class:"foto_buyer" %>
   </div>
 
-  <div class="col-sm-12 col-md-10">
+  <div class="col-sm-12 col-md-9">
     <h1><%=@buyer.first_name %>  <%= @buyer.last_name %></h1>
     <p><%= @buyer.phone %></p>
     <p><%= @buyer.email %></p>
@@ -24,7 +24,7 @@
   <div class="col-sm-11 offset-sm-1 contenedor table-responsive" style="padding:20px 0">
 
     <div class="row">
-      <div class="col-md-2"><h1>Kobros</h1></div>
+      <div class="col-md-7"><h1>Kobros</h1></div>
       <div class="col-md-4"><%= link_to 'Vender', buyer_products_path(@buyer), class:"btn btn-block btn-outline-primary btn-sm" %></div>
     </div>
 
