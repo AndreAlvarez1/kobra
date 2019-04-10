@@ -6,7 +6,7 @@
   <body style="background-color:#F5F5F5; padding:40px 20px">
     <div class="container" style="width:90%; padding:20px 0; background-color:white">
       <h1 style="font-family:Arial, sans-serif; margin-left:20px">
-        Hola <%= @user.first_name %> <%= @user.last_name %>
+        Hola <%= @buyer.first_name %> <%= @buyer.last_name %>
       </h1>
       <p style="font-family:Arial, sans-serif; margin-left:20px">Aquí el detalle de los items por pagar a <%= @seller.first_name %> <%= @seller.last_name %></p>
       <p style="font-family:Arial, sans-serif; margin-left:20px">ID Kobro: #<%= @billing.id %> | Emitido el: <%= @billing.created_at.strftime(" %d-%m-%y ") %></p>
@@ -45,7 +45,7 @@
                         font-size: 23px;
                         font-weight: bold;
                         font-family:Arial, sans-serif;">
-             Cuenta Total: <%=number_to_currency(@billing.orders.pluck('price').sum(), precision: 0, seperator: ",", delimiter: ".") %>
+             Cuenta Total: <%=number_to_currency(@billing.billing_total, precision: 0, seperator: ",", delimiter: ".") %>
              <td>
           </tr>
         </tbody>

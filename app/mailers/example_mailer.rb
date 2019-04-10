@@ -1,13 +1,12 @@
 class ExampleMailer < ApplicationMailer
   default from: 'hey@andrealvarez.com'
 
-  def sample_email(user,link,seller,billing)
-   @user = user
+  def sample_email(buyer,link,seller,billing)
+   @buyer = buyer
    @link = link
    @seller = seller
    @billing = billing
-   @texto = "textos textos"
-   mail(to: @user.email, subject: 'Mail de Kobra')
+   mail(to: @buyer.email, subject: 'Mail de Kobra')
   end
 
 end

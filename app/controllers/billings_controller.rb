@@ -12,7 +12,7 @@ class BillingsController < ApplicationController
   def pre_pay
     @buyer = Buyer.find(params[:buyer_id])
     orders = @buyer.orders.where(status: 0)
-    total = orders.pluck("price*quantity").sum()
+    # total = orders.pluck("price*quantity").sum()
 
 
     billing = Billing.create(
@@ -24,6 +24,8 @@ class BillingsController < ApplicationController
             order.billing_id = billing.id
             order.save
           end
+
+    total = billing.billing_total
 
           ExampleMailer.sample_email(@buyer,billing.link,current_seller,billing).deliver
 

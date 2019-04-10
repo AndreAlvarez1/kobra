@@ -58,7 +58,7 @@
             <tr>
                 <td>  <%= billing.buyer.first_name %> <%= billing.buyer.last_name %></td>
                 <td>  <%= billing.created_at.strftime(" %d-%m-%y ") %></td>
-                <td>  <%= number_to_currency(billing.orders.pluck('price').sum(), precision: 0, seperator: ",", delimiter: ".")%></td>
+                <td>  <%= number_to_currency(billing.billing_total, precision: 0, seperator: ",", delimiter: ".")%></td>
                 <td>  <%= billing.status %></td>
                 <td>
                     <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#<%=billing.id %>" aria-expanded="false" aria-controls="collapseExample">Detalle</button>

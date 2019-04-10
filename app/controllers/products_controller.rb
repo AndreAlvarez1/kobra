@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
       @total_amount = 0
       @orders.each do |order|
         @total_quantity += order.quantity
-        @total_amount += order.price
+        @total_amount += order.price*order.quantity
       end
 
     end
