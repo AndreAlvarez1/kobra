@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :buyers do
     resources :orders, only: [:create]
     post 'orders/add'
+    post 'orders/substract'
     resources :products, only: [:index]
 
   end
