@@ -33,8 +33,13 @@
               <td class="clickeable"><%= link_to product.name, product %></td>
               <td><%= number_to_currency(product.price, precision: 0, seperator: ",", delimiter: ".")%></td>
               <% if params[:buyer_id].present?%>
-                <td><%= link_to 'Agregar', buyer_orders_path(product: product.id), method: :post, class:"btn btn-outline-primary" %></td>
-                <td><%= link_to 'Sumar', buyer_orders_add_path(product: product.id), method: :post, class:"btn btn-outline-danger" %></td>
+                <% if product.basquet_quantity(@buyer) == 0  %>
+                  <td><%= link_to 'Agregar', buyer_orders_path(product: product.id), method: :post, class:"btn btn-outline-primary" %></td>
+                <% elsif product.basquet_quantity(@buyer) > 0  %>
+                  <td><%= link_to '<i class="fas fa-minus-circle fa-2x"></i>'.html_safe, buyer_orders_substract_path(product: product.id), method: :post %>
+                  <%= product.basquet_quantity(@buyer) %>
+                  <%= link_to '<i class="fas fa-plus-circle fa-2x"></i>'.html_safe, buyer_orders_add_path(product: product.id), method: :post %></td>
+                <% end %>
               <% end %>
               <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
@@ -67,7 +72,7 @@
 
 
   <% if params[:buyer_id].present?%>
-  <button class="btn btn-primary btn-lg btn-block fixed-bottom" data-toggle="modal" data-target="#canasta"><%= @cantidad %> | <i class="fa fa-shopping-basket"></i> Ver Canasta | $<%= @total %> | </button>
+  <button class="btn btn-primary btn-lg btn-block fixed-bottom" data-toggle="modal" data-target="#canasta"><%= @total_quantity %> | <i class="fa fa-shopping-basket"></i> Ver Canasta | $<%= @total_amount %> | </button>
 
   <div class="modal" id="canasta">
     <div class="bottom white b-t" style="height:90vh">
@@ -80,7 +85,7 @@
               <div class="col-8 col-md-10">
                 <p>Canasta de</p>
                 <span class="h5"><%= @buyer.first_name + ' ' + @buyer.last_name  %></span>
-                <p>Total: $<%= @total %></p>
+                <p>Total: $<%= @total_amount %></p>
               </div>
               <div class="col-1 col-md-1">
                 <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">×</a>
