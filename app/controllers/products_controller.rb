@@ -9,11 +9,13 @@ class ProductsController < ApplicationController
     if params[:buyer_id].present?
       @buyer = Buyer.find(params[:buyer_id])
       @orders = Order.where(buyer_id: @buyer.id, status: 0)
-      @cantidad = @orders.length
-      @total = 0
+      @total_quantity = 0
+      @total_amount = 0
       @orders.each do |order|
-        @total += order.price
+        @total_quantity += order.quantity
+        @total_amount += order.price
       end
+
     end
 
     @products = @seller.products
@@ -92,4 +94,7 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:seller_id, :name, :detail, :price, :category)
     end
+
+
+
 end
