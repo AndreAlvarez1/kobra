@@ -12,13 +12,14 @@
  *
  *= require tether/dist/css/tether
  *= require bootstrap/dist/css/bootstrap
- *= require dataTables.net-bs4/css/dataTables.bootstrap4
+*= require datatables.net-bs4/css/dataTables.bootstrap4
  *= require styles/app
  *= require animate
  *= require fullcalendar/dist/fullcalendar
  *= require bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.min
  *= require landing
  *= stub active_admin
+*= require datatables
  *= require_self
  */
 
@@ -145,12 +146,12 @@ color:white;
 
 .serpientes, .kobritas{
   height: 100vh;
-  background-image: url("http://www.andrealvarez.com/kobra/fondo1.svg");
+  background-image: url("//www.andrealvarez.com/kobra/fondo1.svg");
   border: 2px solid white;
 }
 
 .kobritas{
-  background-image: url("http://www.andrealvarez.com/kobra/kobritas.png");
+  background-image: url("//www.andrealvarez.com/kobra/kobritas.png");
 }
 
 .foto_cliente{

@@ -25,7 +25,7 @@ gem 'arctic_admin'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
-
+gem 'jquery-datatables'
 gem 'rb-readline'
 
 gem 'carrierwave'
