@@ -7,8 +7,6 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.1'
 gem 'paypal-sdk-rest'
 
-gem 'bullet', group: 'development'
-
 # Use sqlite3 as the database for Active Record
 group :development, :test do
     gem 'sqlite3'
