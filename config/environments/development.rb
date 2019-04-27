@@ -9,7 +9,7 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  
+
 
   # Show full error reports.
   config.consider_all_requests_local = true
@@ -61,13 +61,13 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.after_initialize do
-  Bullet.enable = true
-  Bullet.bullet_logger = true
-  Bullet.console = true
-  Bullet.rails_logger = true
-  Bullet.add_footer = true
-  end
+  # config.after_initialize do
+  # Bullet.enable = true
+  # Bullet.bullet_logger = true
+  # Bullet.console = true
+  # Bullet.rails_logger = true
+  # Bullet.add_footer = true
+  # end
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 

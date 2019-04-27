@@ -303,7 +303,6 @@ DEPENDENCIES
   activeadmin
   arctic_admin
   bootsnap (>= 1.1.0)
-  bullet
   byebug
   capybara (>= 2.15)
   carrierwave

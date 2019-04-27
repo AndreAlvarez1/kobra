@@ -1,0 +1,23 @@
+<div class="row pad_izq">
+    <div class="col-10 col-md-6">
+      <%= form_with(model: event) do |form| %>
+
+        <%= form.hidden_field :seller_id, :value => current_seller.id %>
+
+        <div class="field" id="newDate">
+          <%= form.label :start %>
+          <%= form.text_field :start, id: 'event_start', class:"form-control" %>
+        </div>
+
+        <div class="field"id="endDate">
+          <%= form.label :end %>
+          <%= form.text_field :end, id: 'event_end', class:"form-control"  %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit :Submit, class:"btn btn-primary" %>
+        </div>
+      <% end %>
+
+    </div>
+</div>

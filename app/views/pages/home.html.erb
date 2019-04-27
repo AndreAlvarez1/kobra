@@ -1,6 +1,51 @@
 <div class="serpientes">
   <div class="contenedor">
     <h1>!KOBRA home de la app</h1>
-    <p class="pruebacss">Aqui va la web promocional de la app</p>
+    
+    <%= render 'form', event: @event %>
+
+    <div class="row">
+      <div class="col-md-6">
+        <canvas id="myChart" width="100%"></canvas>
+      </div>
+    </div>
+    <script>
+
+  var name_js = [<%= raw @names.to_json %>];
+  var values_js = [<%= raw @values.to_json %>];
+
+
+      var ctx = document.getElementById('myChart');
+      var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: name_js[0],
+              datasets: [{
+                  label: '# of Votes',
+                  data: values_js[0],
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 159, 64, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              }
+          }
+      });
+    </script>
   </div>
 </div>
