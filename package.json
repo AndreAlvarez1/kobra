@@ -4,11 +4,7 @@
   "dependencies": {
     "bootstrap": "^4.1.3",
     "bootstrap4-datetimepicker": "^5.2.3",
-<<<<<<< HEAD
     "chart.js": "^2.8.0",
-=======
-    "datatables.net": "^1.10.19",
->>>>>>> 198f8a335dbff0c96c56f6718c79d784994b1a49
     "datatables.net-bs4": "^1.10.19",
     "font-awesome": "^4.7.0",
     "fullcalendar": "^3.9.0",
