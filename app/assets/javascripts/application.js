@@ -17,6 +17,7 @@
 //= require datatables.net-bs4/js/dataTables.bootstrap4
 //= require rails-ujs
 //= require turbolinks
+//= require datatables
 //= require moment/moment
 //= require moment-timezone/moment-timezone
 //= require bootstrap4-datetimepicker/build/js/bootstrap-datetimepicker.min
