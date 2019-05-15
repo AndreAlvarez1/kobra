@@ -12,6 +12,17 @@
       </div>
     </div>
 
+    <h2>Ventas en Kanasta: <%= @orders_on_basket_amount %> </h2>
+    <h2>Kobros Pendientes de Pago: <%= @orders_not_paid_amount %> </h2>
+
+    <%= @months %>
+    <%= @on_basquet_amounts %>
+    <%= @not_paid_amounts %>
+    <%= @paid_amount %>
+
+
+
+
     <div class="row">
       <div class="col-md-6">
         <canvas id="myChart" width="100%"></canvas>
