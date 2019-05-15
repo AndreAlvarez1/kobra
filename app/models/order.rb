@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   belongs_to :product
   belongs_to :billing, optional: true
 
-  enum status: [:onbascket, :notpaid, :paid, :cancel]
+  enum status: [:onbasket, :notpaid, :paid, :cancel]
 
   def total_amount
     quantity*price
