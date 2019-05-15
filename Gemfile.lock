@@ -75,7 +75,7 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.5.2)
+    addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
@@ -86,27 +86,21 @@ GEM
       font-awesome-rails
       jquery-rails
     arel (9.0.0)
+    awesome_print (1.8.0)
     bcrypt (3.1.12)
     bindex (0.5.0)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
     builder (3.2.3)
-<<<<<<< HEAD
-    byebug (10.0.2)
-    capybara (3.8.2)
-=======
-    bullet (5.9.0)
-      activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.11)
     byebug (11.0.1)
-    capybara (3.17.0)
->>>>>>> 1273cb650ece820de1d341107dc630ced5a9c466
+    capybara (3.19.1)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
-      xpath (~> 3.1)
+      regexp_parser (~> 1.2)
+      xpath (~> 3.2)
     carrierwave (1.2.3)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -184,13 +178,13 @@ GEM
     mime-types-data (3.2018.0812)
     mimemagic (0.3.2)
     mini_mime (1.0.1)
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.4.0)
     minitest (5.11.3)
     msgpack (1.2.4)
     multi_json (1.13.1)
     nio4r (2.3.1)
-    nokogiri (1.8.4)
-      mini_portile2 (~> 2.3.0)
+    nokogiri (1.10.3)
+      mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     paypal-sdk-rest (1.7.2)
       multi_json (~> 1.0)
@@ -198,7 +192,7 @@ GEM
     pg (1.1.3)
     public_suffix (3.0.3)
     puma (3.12.0)
-    rack (2.0.6)
+    rack (2.0.7)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.1)
@@ -235,6 +229,7 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rb-readline (0.5.5)
+    regexp_parser (1.4.0)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -278,14 +273,8 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.19)
       execjs (>= 0.3.0, < 3)
-<<<<<<< HEAD
-    warden (1.2.7)
-      rack (>= 1.0)
-=======
-    uniform_notifier (1.12.1)
     warden (1.2.8)
       rack (>= 2.0.6)
->>>>>>> 1273cb650ece820de1d341107dc630ced5a9c466
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -295,7 +284,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
     xml-simple (1.1.5)
-    xpath (3.1.0)
+    xpath (3.2.0)
       nokogiri (~> 1.8)
 
 PLATFORMS
@@ -304,6 +293,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   arctic_admin
+  awesome_print
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
