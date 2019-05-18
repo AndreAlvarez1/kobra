@@ -20,6 +20,8 @@ gem 'activeadmin'
 
 gem 'awesome_print'
 
+gem 'faker'
+
 gem 'arctic_admin'
 
 gem 'ransack', github: 'activerecord-hackery/ransack'
