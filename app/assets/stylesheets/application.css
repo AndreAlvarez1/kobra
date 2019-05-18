@@ -18,8 +18,9 @@
  *= require fullcalendar/dist/fullcalendar
  *= require bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.min
  *= require landing
+ *= require pages
  *= stub active_admin
-*= require datatables
+ *= require datatables
  *= require_self
  */
 
@@ -244,6 +245,8 @@ canvas{
   height:400px;
 }
 
+
+
 @media (min-width: 576px) {
 
 }
@@ -269,6 +272,7 @@ canvas{
 .botones{
   margin-bottom: 20px;
 }
+
 }
 
 @media (min-width: 1200px) {

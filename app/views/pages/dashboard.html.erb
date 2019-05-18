@@ -1,36 +1,48 @@
 
 
 <div class="kobritas">
-  <div class="container">
 
-  <div class="row stats_generales">
-    <div class="col-12 col-md-2">
-      <%= link_to 'Vender', buyers_path, class: 'btn btn-block btn-primary' %>
+
+  <div class="row stats_generales animated fadeIn alingTitulo">
+    <div class="col-12 col-md-2 margen-cel">
+      <%= link_to 'Vender', buyers_path, class: 'btn btn-block btn-verde' %>
     </div>
-    <div class="col-12 col-md-2">
-      <%= image_tag 'kobra_black.svg' %>
-      <h1>$ 105.000</h1>
-    </div>
-    <div class="col-12 col-md-2">
-      <%= image_tag 'kobra_black.svg' %>
-      <h1>$ 105.000</h1>
+    <div class="col-12 col-md-5 col-lg-4 margen-cel">
+      <h1><%= image_tag 'canasta_black.svg', class:"icono" %><%=number_to_currency(@orders_on_basket_amount, precision: 0, seperator: ",", delimiter: ".")%></h1>
+      <p>Ventas por en Canasta</p>
     </div>
 
+    <div class="col-12 col-md-5 col-lg-4 margen-cel">
+      <h1> <%= image_tag 'kobra_black.svg', class:"icono" %><%= number_to_currency(@orders_not_paid_amount, precision: 0, seperator: ",", delimiter: ".") %></h1>
+      <p>Kobros pendientes de pago</p>
+    </div>
   </div>
 
+  <%= @months %>
+  <%= @on_basquet_amounts %>
+  <%= @not_paid_amounts %>
+  <%= @paid_amount %>
 
   <!--GRAFICO DE BARRAS-->
-    <div class="row"
+    <div class="row blanco"
       <div class="col-10 offset-1">
         <div class="wrapper">
         <canvas id="myChart4"></canvas>
         </div>
       </div>
     </div>
-</div>
-</div>
+
+  </div>
 
 <script>
+
+  var months_js = [<%= raw @months.to_json %>];
+  var on_basquet_amounts_js = [<%= raw @on_basquet_amounts.to_json %>];
+  var not_paid_amounts_js = [<%= raw @not_paid_amounts.to_json %>];
+  var paid_amount_js = [<%= raw @paid_amount.to_json %>];
+
+  console.log("hola");
+
   alert("Saca el script de la vista!");
   var ctx = document.getElementById("myChart4").getContext('2d');
   var myChart = new Chart(ctx, {
