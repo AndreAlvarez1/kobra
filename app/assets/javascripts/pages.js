@@ -33,4 +33,57 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     });
 
+    /////////////////////////////////////GRAFICO DE BARRAS//////////////
+
+    var ctxx = document.getElementById("barras_meses").getContext('2d');
+    var barras_3meses = new Chart(ctxx, {
+    type: 'bar',
+    data: {
+      labels: months_js[0],
+      datasets: [{
+        label: 'On Basket',
+        backgroundColor: "#ffad60",
+        data: on_basquet_amounts_js[0],
+      }, {
+        label: 'Not Paid',
+        backgroundColor: "#d9534f",
+        data: not_paid_amounts_js[0],
+      }, {
+        label: 'Paid',
+        backgroundColor: "#96ceb4",
+        data: paid_amount_js[0],
+      }],
+    },
+    options: {
+      tooltips: {
+        displayColors: true,
+        callbacks:{
+          mode: 'x',
+        },
+      },
+      scales: {
+        xAxes: [{
+          stacked: true,
+          gridLines: {
+            display: false,
+          }
+        }],
+        yAxes: [{
+          stacked: true,
+          ticks: {
+            beginAtZero: true,
+          },
+          type: 'linear',
+        }]
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+      legend: { position: 'bottom' },
+    }
+    });
+
+
+
+
+
 });
