@@ -4,6 +4,11 @@ require 'faker'
 
 errors = []
 
+# ---------- DESTROYING ALL ----------
+
+# Order.destroy_all
+# Seller.destroy
+
 # ---------- CREATING SELLERS ----------
 
 seller1 = Seller.new
@@ -20,6 +25,7 @@ seller1.bank = 5
 seller1.accounttype = 'Cuenta Corriente'
 seller1.accountnumber = '158213412'
 seller1.accountrut = '16.368.107-2'
+seller1.save
 
 seller2 = Seller.new
 seller2.first_name = 'André'
@@ -35,8 +41,11 @@ seller2.bank = 6
 seller2.accounttype = 'Cuenta Corriente'
 seller2.accountnumber = '758243412'
 seller2.accountrut = '16.314.245-1'
+seller2.save
 
 sellers = [seller1, seller2]
+
+puts '2 Sellers created'
 
 # ---------- CREATING BUYERS ----------
 
@@ -46,11 +55,15 @@ buyers_quantity.times do
   buyer.first_name = Faker::Name.female_first_name
   buyer.last_name = Faker::Name.last_name
   buyer.email = Faker::Internet.email
-  buyer.rut = rand(8..25).to_s+"."+rand(100..999).to_s+"."+rand(100..999).to_s+"-"+rand(1..9).to_s
-  buyer.phoyo = "https://randomuser.me/api/portraits/female/#{rand(1..99)}.jpg"
+  # buyer.rut = rand(8..25).to_s+"."+rand(100..999).to_s+"."+rand(100..999).to_s+"-"+rand(1..9).to_s
+  buyer.photo = "https://randomuser.me/api/portraits/female/#{rand(1..99)}.jpg"
   buyer.phone = Faker::PhoneNumber.cell_phone
   buyer.seller_id = rand(1..2)
+  buyer.save
 end
+
+puts "#{buyers_quantity} Buyers created"
+
 
 # ---------- CREATING PRODUCTS ----------
 
@@ -63,7 +76,12 @@ products_quantity.times do
   product.detail = Faker::ChuckNorris.fact
   product.price = rand(10..1000)*100
   product.category = rand(0..1)
+  product.save
+  puts "Product ##{product.id} created"
 end
+
+puts "#{products_quantity} Products created"
+
 
 
 # ---------- CREATING ORDERS ----------
@@ -78,9 +96,14 @@ orders_quantity.times do
   order.status = 0
   order.created_at = Faker::Date.between(15.months.ago, Date.today)
   order.quantity = rand(1..10)
-  order.price = order.product.price*rand(0,9..1,1)
+  order.price = Product.find_by(id: order.product_id).price*rand(0.9..1.1).to_i
+  order.save
   orders_array << order
+  puts "Order #{order.id} created"
 end
+
+puts "#{orders_array.length} Orders created"
+
 
 # ---------- CREATING BILLINGS ----------
 
@@ -95,29 +118,35 @@ billings_quantity.times do
   billing.buyer_id = rand(1..buyers_quantity)
 
   # ASIGNING ALL ORDERS TO BILLINGS WITH SAME BUYER_ID
-  orders_array.each do |ord|
-    if ord.status == 0
-      if ord.buyer_id == billing.buyer_id
-        ord.status = 1
-        ord.billing_id = billing.id
-      end
+
+  orders_to_bill = Order.where(status: 0, buyer_id: billing.buyer_id)
+  if orders_to_bill.length > 0
+    billing.save
+    orders_to_bill.each do |ord|
+      ord.status = 1
+      ord.billing_id = billing.id
+      ord.save
     end
   end
 
-  max_date_order = billing.orders.order('created_at DESC').first.created_at
-
-  billing.created_at = max_date_order + 86400*rand(10..60)
-
-  billing.status = 0
-
-  billings_array << billing
+  if billing.orders.count > 0
+    max_date_order = billing.orders.order('created_at DESC').first.created_at
+    billing.created_at = max_date_order + 86400 * rand(10..60)
+    billing.status = 0
+    billing.save
+    billings_array << billing
+    puts "Billing #{billing.id} created"
+  end
 
 end
 
+puts "#{Billing.count} Billings created"
+
+
 # ---------- CREATING MORE ORDERS ----------
 
-orders_quantity = buyers_quantity*50
-orders_array = []
+orders_quantity = buyers_quantity*20
+new_orders_array = []
 
 orders_quantity.times do
   order = Order.new
@@ -126,18 +155,27 @@ orders_quantity.times do
   order.status = 0
   order.created_at = Faker::Date.between(15.months.ago, Date.today)
   order.quantity = rand(1..10)
-  order.price = order.product.price*rand(0,9..1,1)
-  orders_array << order
+  order.price = order.product.price*rand(0.9..1.1)
+  order.save
+  new_orders_array << order
+  puts "Order #{order.id} created"
 end
+
+puts "#{new_orders_array.length} Orders created"
+
 
 # ---------- CREATING PAYMENTS ----------
 
 billings_array.each do |blg|
   random_num = rand(1..2)
-  if randon_num == 1
+  if random_num == 1
     blg.status = 1
+    blg.save
+    puts "Billing #{blg.id} changed from 'not_paid' to 'paid'"
     blg.orders.each do |ord|
       ord.status = 2
+      ord.save
+      puts "Order #{ord.id} changed from 'not_paid' to 'paid'"
     end
   end
 end
