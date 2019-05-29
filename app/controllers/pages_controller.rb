@@ -99,7 +99,8 @@ class PagesController < ApplicationController
 
     @all_orders_hash.each do |array|
       total_on_basket, total_not_paid, total_paid = 0, 0, 0
-      @months << array[0].strftime("%m")
+      @months << l(array[0], format: '%B')
+
       array[1].each do |order|
         if order.status == "onbasket"
           total_on_basket += order.total_amount

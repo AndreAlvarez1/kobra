@@ -18,10 +18,7 @@
     </div>
   </div>
 
-  <%= @months %>
-  <%= @on_basquet_amounts %>
-  <%= @not_paid_amounts %>
-  <%= @paid_amount %>
+
 
   <!--GRAFICO DE BARRAS-->
     <div class="row blanco"
@@ -30,6 +27,10 @@
         <canvas id="myChart4"></canvas>
         </div>
       </div>
+      <%= @months %>
+      <%= @on_basquet_amounts %>
+      <%= @not_paid_amounts %>
+      <%= @paid_amount %>
     </div>
 
   </div>
@@ -41,26 +42,28 @@
   var not_paid_amounts_js = [<%= raw @not_paid_amounts.to_json %>];
   var paid_amount_js = [<%= raw @paid_amount.to_json %>];
 
-  console.log("hola");
+  console.log("meses:" + months_js);
+  console.log("onBasket" + on_basquet_amounts_js);
+  console.log("notPaid" + not_paid_amounts_js);
 
   alert("Saca el script de la vista!");
   var ctx = document.getElementById("myChart4").getContext('2d');
   var myChart = new Chart(ctx, {
 	type: 'bar',
 	data: {
-		labels: ["Enero","Febrero","Marzo","Abril","Mayo","Junio"],
+		labels: months_js[0],
 		datasets: [{
 			label: 'On Basket',
 			backgroundColor: "#caf270",
-			data: [1, 2, 3, 4, 5, 6],
+			data: on_basquet_amounts_js[0],
 		}, {
 			label: 'Not Paid',
 			backgroundColor: "#45c490",
-			data: [7,8,9,10,11,12],
+			data: not_paid_amounts_js[0],
 		}, {
 			label: 'Paid',
 			backgroundColor: "#008d93",
-			data: [13,14,15,16,17,18],
+			data: paid_amount_js[0],
 		}],
 	},
 options: {
