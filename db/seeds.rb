@@ -145,7 +145,7 @@ puts "#{Billing.count} Billings created"
 
 # ---------- CREATING MORE ORDERS ----------
 
-orders_quantity = buyers_quantity*20
+orders_quantity = buyers_quantity*5
 new_orders_array = []
 
 orders_quantity.times do
