@@ -21,8 +21,8 @@
           <%= f.text_field :created_at_lteq, id: 'event_start', class:"form-control"%>
         </div>
         <div class="form-group col-md-2">
-          <%= f.label :status_cont, "Estado" %>
-          <%= f.select :status_cont, [0,1,2], :prompt => "Todos", class:"form-control" %>
+          <%= f.label :status_eq, "Estado" %>
+          <%= f.select :status_eq, Billing.statuses.to_a.map { |w| [w[0].humanize, w[1]] }, :prompt => "Todos", class:"form-control" %>
 
         </div>
       </div>
