@@ -1,5 +1,6 @@
 <nav id="hideme" class="navbar navbar-expand-lg navbar-dark bg-black">
   <%= image_tag 'k_logo_blanco.svg', class:"logo" %>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,6 +10,9 @@
 
     <ul class="navbar-nav mr-auto">
         <% if seller_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to 'Inicio', pages_dashboard_path, class: 'nav-link' %>
+        </li>
         <li class="nav-item active">
           <%= link_to 'Productos', products_path, class: 'nav-link' %>
         </li>

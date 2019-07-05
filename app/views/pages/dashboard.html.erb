@@ -1,7 +1,95 @@
 
 
-<div class="row kobritas">
-<div class="col-md-4 offset-md-4 logo3">
-  <%= image_tag 'k_logo.svg' %>
-</div>
-</div>
+<div class="kobritas">
+
+
+  <div class="row stats_generales animated fadeIn alingTitulo">
+    <div class="col-12 col-md-2 margen-cel">
+      <%= link_to 'Vender', buyers_path, class: 'btn btn-block btn-verde' %>
+    </div>
+    <div class="col-12 col-md-5 col-lg-4 margen-cel">
+      <h1><%= image_tag 'canasta_black.svg', class:"icono" %><%=number_to_currency(@orders_on_basket_amount, precision: 0, seperator: ",", delimiter: ".")%></h1>
+      <p>Ventas por en Canasta</p>
+    </div>
+
+    <div class="col-12 col-md-5 col-lg-4 margen-cel">
+      <h1> <%= image_tag 'kobra_black.svg', class:"icono" %><%= number_to_currency(@orders_not_paid_amount, precision: 0, seperator: ",", delimiter: ".") %></h1>
+      <p>Kobros pendientes de pago</p>
+    </div>
+  </div>
+
+
+
+  <!--GRAFICO DE BARRAS-->
+    <div class="row blanco"
+      <div class="col-10 offset-1">
+        <div class="wrapper">
+        <canvas id="myChart4"></canvas>
+        </div>
+      </div>
+      <%= @months %>
+      <%= @on_basquet_amounts %>
+      <%= @not_paid_amounts %>
+      <%= @paid_amount %>
+    </div>
+
+  </div>
+
+<script>
+
+  var months_js = [<%= raw @months.to_json %>];
+  var on_basquet_amounts_js = [<%= raw @on_basquet_amounts.to_json %>];
+  var not_paid_amounts_js = [<%= raw @not_paid_amounts.to_json %>];
+  var paid_amount_js = [<%= raw @paid_amount.to_json %>];
+
+  console.log("meses:" + months_js);
+  console.log("onBasket" + on_basquet_amounts_js);
+  console.log("notPaid" + not_paid_amounts_js);
+
+  var ctx = document.getElementById("myChart4").getContext('2d');
+  var myChart = new Chart(ctx, {
+	type: 'bar',
+	data: {
+		labels: months_js[0],
+		datasets: [{
+			label: 'On Basket',
+			backgroundColor: "#ffad60",
+			data: on_basquet_amounts_js[0],
+		}, {
+			label: 'Not Paid',
+			backgroundColor: "#d9534f",
+			data: not_paid_amounts_js[0],
+		}, {
+			label: 'Paid',
+			backgroundColor: "#96ceb4",
+			data: paid_amount_js[0],
+		}],
+	},
+options: {
+    tooltips: {
+      displayColors: true,
+      callbacks:{
+        mode: 'x',
+      },
+    },
+    scales: {
+      xAxes: [{
+        stacked: true,
+        gridLines: {
+          display: false,
+        }
+      }],
+      yAxes: [{
+        stacked: true,
+        ticks: {
+          beginAtZero: true,
+        },
+        type: 'linear',
+      }]
+    },
+		responsive: true,
+		maintainAspectRatio: false,
+		legend: { position: 'bottom' },
+	}
+});
+</script>

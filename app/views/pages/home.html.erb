@@ -1,6 +1,38 @@
 <div class="serpientes">
   <div class="contenedor">
     <h1>!KOBRA home de la app</h1>
-    <p class="pruebacss">Aqui va la web promocional de la app</p>
+
+    <div class="row">
+      <div class="col-md-4">
+        <%= form_tag pages_home_path, method: :get do  %>
+          <%= text_field_tag 'search[date_from]', @search.date_from %>
+          <%= text_field_tag 'search[date_to]', @search.date_to %>
+          <%= submit_tag 'Filtrar', class: 'btn btn-success' %>
+        <% end  %>
+      </div>
+    </div>
+
+    <h2>Ventas en Kanasta: <%= @orders_on_basket_amount %> </h2>
+    <h2>Kobros Pendientes de Pago: <%= @orders_not_paid_amount %> </h2>
+
+    <%= @months %>
+    <%= @on_basquet_amounts %>
+    <%= @not_paid_amounts %>
+    <%= @paid_amount %>
+
+
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <canvas id="myChart" width="100%"></canvas>
+      </div>
+    </div>
+
+    <script>
+      var name_js = [<%= raw @names.to_json %>];
+      var values_js = [<%= raw @values.to_json %>];
+    </script>
+
   </div>
 </div>
