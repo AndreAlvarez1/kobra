@@ -10,8 +10,9 @@ class Buyer < ApplicationRecord
   validates :last_name, presence: true
   validates :email, presence: true
 
-  def ranking_sales_between_dates(start_date, end_date)
-    @buyers = Buyer.all
+  def ranking_sales_between_dates(start_date, end_date, seller)
+    @seller = seller
+    @buyers = @seller.buyers
     @array = []
     @buyers.each do |buyer|
       @array << [buyer.full_name, buyer.total_sales_between_dates(start_date, end_date)]

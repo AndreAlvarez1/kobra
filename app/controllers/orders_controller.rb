@@ -4,7 +4,9 @@ class OrdersController < ApplicationController
 
   def index
     @seller = current_seller
-    @orders = @seller.orders
+    @search = @seller.orders.search(params[:q])
+    @search.sorts = 'created_at desc' if @search.sorts.empty?
+    @orders = @search.result.includes(:buyer)
 
   end
 

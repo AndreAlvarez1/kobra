@@ -1,23 +1,71 @@
-<div id="products" class="row justify-content-center ">
+<div id="products" class="row justify-content-center  animated fadeIn fast">
   <div class="col-sm-11 offset-sm-1 contenedor" style="padding:20px 0">
 
-  <h1>Orders</h1>
-  <table class="table table-striped table-hover table-responsive-sm">
-    <% @orders.each do |order| %>
-    <tr>
-    <td><%= order.buyer.first_name + ' ' + order.buyer.last_name %></td>
-    <td><%= order.product.name%></td>
-    <td><%= number_to_currency(order.product.price, precision: 0, seperator: ",", delimiter: ".")%></td>
-    <td><%= order.created_at.strftime(" %d-%m-%y ")%></td>
-    <td><%= order.status%></td>
-    <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, order, method: :delete, data: { confirm: 'Seguro?' } %><td>
-    <tr>
-    <% end %>
-    <tr>
-      <td>Ventas totales <%= @orders.map{|order| order.product.price}.sum%></td>
-    </tr>
-    </table>
+      <h1>Ventas</h1>
+      <h5 class="pad_izq">Lista de todas las ventas que has agregado (incluyendo las kobradas y no kobradas).</h5>
 
+      <p class="pad_izq">Resutados búsqueda: <%= @orders.count %></p>
+
+      <div class="buscador">
+          <%= search_form_for @search do |f| %>
+          <form>
+            <div class="form-row modal-body">
+              <div class="form-group col-md-2">
+                <%= f.label :buyer_first_name_cont, "Nombre contiene" %>
+                <%= f.text_field :buyer_first_name_or_buyer_last_name_cont, class:"form-control" %>
+              </div>
+              <div class="form-group col-md-2">
+                <%= f.label :created_at_gteq, "Fecha de inicio" %>
+                <%= f.text_field :created_at_gteq, id: 'event_start', class:"form-control" %>
+              </div>
+              <div class="form-group col-md-2">
+                <%= f.label :created_at_lteq, "Fecha Final"  %>
+                <%= f.text_field :created_at_lteq, id: 'event_start', class:"form-control"%>
+              </div>
+              <div class="form-group col-md-2">
+                <%= f.label :status_eq, "Estado" %>
+                <%= f.select :status_eq, Order.statuses.to_a.map { |w| [w[0].humanize, w[1]] }, :prompt => "Todos", class:"form-control" %>
+
+              </div>
+            </div>
+
+            <div class="form-row pad_izq">
+              <div class="col-sm-10 offset-sm-1 offset-md-0 col-md-3">
+                <div class="actions"><%= f.submit "Filtrar", class:"btn btn-outline-success btn-block" %></div>
+              </div>
+              <div class="col-sm-10 offset-sm-1 offset-md-0 col-md-3 mar_top" >
+                <%= link_to 'Limpiar Busqueda', billings_path, class:"btn btn-outline-danger btn-block" %>
+              </div>
+            </div>
+
+        </form>
+          <% end %>
+
+      </div>
+
+      <table  class="table table-striped table-hover table-responsive-md ">
+        <thead>
+          <tr>
+            <th><%=sort_link @search, :buyer_first_name, "Cliente" %></th>
+            <th><%=sort_link @search, :created_at, "Fecha Creación Venta" %></th>
+            <th>Total Venta</th>
+            <th><%=sort_link @search, :status, "Status Venta" %></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+              <td>  <%= order.buyer.first_name %> <%= order.buyer.last_name %></td>
+              <td>  <%= order.created_at.strftime(" %d-%m-%y ") %></td>
+              <td>  <%= number_to_currency(order.total_amount, precision: 0, seperator: ",", delimiter: ".")%></td>
+              <td>  <%= order.status %></td>
+          </tr>
+
+        <% end %>
+        </tbody>
+    </table>
 
   </div>
 </div>
