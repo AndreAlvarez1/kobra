@@ -9,7 +9,7 @@
     </div>
     <div class="col-12 col-md-5 col-lg-4 margen-cel">
       <h1><%= image_tag 'canasta_black.svg', class:"icono" %><%=number_to_currency(@orders_on_basket_amount, precision: 0, seperator: ",", delimiter: ".")%></h1>
-      <p>Ventas por en Canasta</p>
+      <p>Ventas en Canasta</p>
     </div>
 
     <div class="col-12 col-md-5 col-lg-4 margen-cel">
@@ -27,10 +27,7 @@
         <canvas id="myChart4"></canvas>
         </div>
       </div>
-      <%= @months %>
-      <%= @on_basquet_amounts %>
-      <%= @not_paid_amounts %>
-      <%= @paid_amount %>
+
     </div>
 
   </div>

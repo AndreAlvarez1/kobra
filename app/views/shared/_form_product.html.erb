@@ -11,28 +11,28 @@
 
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name, 'Nombre' %>
     <%= form.text_field :name, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :detail %>
+    <%= form.label :detail, 'Descripción' %>
     <%= form.text_area :detail, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
+    <%= form.label :price, 'Precio' %>
     <%= form.number_field :price, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :category %>
+    <%= form.label :category, '¿Producto o Servicio?' %>
     <%= form.select :category, Product.categories.keys.to_a, class:"form-control" %>
   </div>
 
 
-  <div class="actions">
-    <%= form.submit class:"btn btn-success" %>
+  <div class="actions" style="margin-top:10px">
+    <%= form.submit 'Guardar', class:"btn btn-success" %>
   </div>
 
 <% end %>

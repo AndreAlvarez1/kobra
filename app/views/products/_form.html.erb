@@ -21,22 +21,22 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name, "Nombre" %>
     <%= form.text_field :name, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :detail %>
+    <%= form.label :detail, 'Detalle' %>
     <%= form.text_area :detail, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
+    <%= form.label :price, 'Precio' %>
     <%= form.number_field :price, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :category %>
+    <%= form.label :category, '¿Producto o servicio?' %>
     <%= form.select :category, Product.categories.keys.to_a, class:"form-control" %>
   </div>
 
@@ -45,7 +45,7 @@
 
 
   <div class="actions">
-    <%= form.submit class:"btn btn-success" %>
+    <%= form.submit 'Crear producto', class:"btn btn-success" %>
   </div>
 <% end %>
 
