@@ -10,15 +10,15 @@
     <%= search_form_for @search do |f| %>
     <form>
       <div class="form-row modal-body">
-        <div class="form-group col-md-2">
+        <div class="form-group col-md-3">
           <%= f.label :buyer_first_name_cont, "Nombre contiene" %>
           <%= f.text_field :buyer_first_name_or_buyer_last_name_cont, class:"form-control" %>
         </div>
-        <div class="form-group col-md-2">
+        <div class="form-group col-md-3">
           <%= f.label :created_at_gteq, "Fecha de inicio" %>
           <%= f.text_field :created_at_gteq, id: 'event_start', class:"form-control" %>
         </div>
-        <div class="form-group col-md-2">
+        <div class="form-group col-md-3">
           <%= f.label :created_at_lteq, "Fecha Final"  %>
           <%= f.text_field :created_at_lteq, id: 'event_start', class:"form-control"%>
         </div>

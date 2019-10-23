@@ -1,8 +1,8 @@
 <div id="products" class="row justify-content-center difuminar">
-  <div class="col-sm-11 offset-sm-1 contenedor table-responsive " style="padding:20px 0">
+  <div class="col-sm-11 offset-sm-1 contenedor table-responsive tabla" >
 
-    <div class="animated fadeIn fast">
-      <div class="row">
+
+      <div class="row animated fadeIn fast">
           <div class="col-7 col-md-9 col-lg-10">
             <h1>Productos</h1>
             <h2>o servicios</h2>
@@ -49,31 +49,13 @@
           <% end %>
         </tbody>
       </table>
-</div>
-
-<!-- Modal Crear Producto -->
-<div class="modal fade" id="crearProductoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Crear Producto</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render "shared/form_product" %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
     </div>
-  </div>
 </div>
-<!-- FIN Modal Crear Producto -->
 
 
 
+<div class="row">
+<div class="col-12">
   <% if params[:buyer_id].present?%>
   <button class="btn btn-primary btn-lg btn-block fixed-bottom" data-toggle="modal" data-target="#canasta"><%= @total_quantity %> | <i class="fa fa-shopping-basket"></i> Ver Canasta | $<%= @total_amount %> | </button>
 
@@ -82,10 +64,10 @@
       <div class="row-col">
 
           <div class="p-a b-b canasta_header row">
-              <div class="col-3 col-md-1">
+              <div class="col-3 col-md-2 text-right">
                 <%= image_tag 'canasta.svg', class:"ico_canasta"%>
               </div>
-              <div class="col-8 col-md-10">
+              <div class="col-8 col-md-9">
                 <p>Canasta de</p>
                 <span class="h5"><%= @buyer.first_name + ' ' + @buyer.last_name  %></span>
                 <p>Total: $<%= @total_amount %></p>
@@ -164,10 +146,10 @@
           <!--Botones guardar y kobrar que se ven solo si hay orders en la canasta %>-->
           <% if @orders.count > 0 %>
             <div class="row botones fixed-bottom">
-              <div class="col-md-2 offset-md-4 col-6">
+              <div class="col-md-3 offset-md-3 col-6">
                 <%= link_to "Guardar" ,root_path, class:"btn btn-success btn-block" %>
               </div>
-              <div class="col-md-2 col-6">
+              <div class="col-md-3 col-6">
                 <%= link_to "Kobrar" ,pre_pay_billings_path(buyer_id: @buyer.id), class:"btn btn-danger btn-block" %>
               </div>
             </div>
@@ -187,3 +169,26 @@
 
 </div>
 </div>
+
+
+
+<!-- Modal Crear Producto -->
+<div class="modal fade" id="crearProductoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render "shared/form_product" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIN Modal Crear Producto -->

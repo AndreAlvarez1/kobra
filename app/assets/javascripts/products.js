@@ -6,6 +6,7 @@
 
   document.addEventListener('turbolinks:load', function(){
     $('#productsTable').DataTable( {
+      iDisplayLength: 100,
       initComplete: function () {
 
                 this.api().columns().every( function () {
