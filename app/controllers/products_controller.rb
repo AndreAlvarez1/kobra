@@ -19,6 +19,14 @@ class ProductsController < ApplicationController
     end
 
     @products = @seller.products
+    @can_create_more_products = false
+    @product_limit_free_plan = 3
+
+    if (@seller.plan_type == "Plan Gratis" && @products.count < @product_limit_free_plan)
+      @can_create_more_products = true
+    elsif @seller.plan_type == "Plan Pagado 1"
+      @can_create_more_products = true
+    end
 
   end
 

@@ -183,7 +183,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= render "shared/form_product" %>
+        <% if @can_create_more_products %>
+          <%= render "shared/form_product" %>
+        <% elsif %>
+          <%= "Tienes el plan #{@seller.plan_type} y #{@products.count} productos." %>
+          <p> Lo sentimos, no puedes crear más productos. Contáctanos! </p>
+        <% end  %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

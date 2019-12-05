@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_03_231039) do
+ActiveRecord::Schema.define(version: 2019_12_05_004952) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 2019_01_03_231039) do
     t.integer "accountnumber"
     t.integer "bank"
     t.string "accountrut"
+    t.integer "plan_type", default: 0
     t.index ["email"], name: "index_sellers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_sellers_on_reset_password_token", unique: true
   end

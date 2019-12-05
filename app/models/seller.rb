@@ -35,5 +35,6 @@ class Seller < ApplicationRecord
                      :'Cuenta de ahorra'
                     ]
 
+  enum plan_type: [:'Plan Gratis', :'Plan Pagado 1']                  
 
 end

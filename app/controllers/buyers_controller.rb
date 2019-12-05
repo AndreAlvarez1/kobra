@@ -7,6 +7,16 @@ class BuyersController < ApplicationController
   def index
     @seller = current_seller
     @buyers = @seller.buyers
+
+    @can_create_more_buyers = false
+    @buyer_limit_free_plan = 3
+
+    if (@seller.plan_type == "Plan Gratis" && @buyers.count < @buyer_limit_free_plan)
+      @can_create_more_buyers = true
+    elsif @seller.plan_type == "Plan Pagado 1"
+      @can_create_more_buyers = true
+    end
+
   end
 
   # GET /buyers/1
