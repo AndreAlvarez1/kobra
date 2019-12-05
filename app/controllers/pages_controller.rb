@@ -38,9 +38,12 @@ class PagesController < ApplicationController
     # ONLY LAST 3 MONTHS.
     @start_three_months_range = 2.months.ago.beginning_of_month
     @end_three_months_range = 0.months.ago.end_of_month
-    @orders_on_range = @seller.orders.where('orders.created_at BETWEEN ? AND ?', @start_three_months_range, @end_three_months_range)
+    @orders_on_range = @seller.orders.where('orders.created_at BETWEEN ? AND ?', @start_three_months_range, @end_three_months_range).order('created_at ASC')
+
+
 
     @all_orders_hash = @orders_on_range.group_by{|order| order.created_at.beginning_of_month}
+
 
     @months, @on_basquet_amounts, @not_paid_amounts, @paid_amount = [], [], [], []
 
