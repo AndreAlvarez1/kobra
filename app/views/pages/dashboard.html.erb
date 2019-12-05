@@ -19,7 +19,6 @@
   </div>
 
 
-
   <!--GRAFICO DE BARRAS-->
     <div class="row blanco"
       <div class="col-10 offset-1">
@@ -34,12 +33,14 @@
 
 <script>
 
+
   var months_js = [<%= raw @months.to_json %>];
+  // var ventas =   @all_orders_hash
+
   var on_basquet_amounts_js = [<%= raw @on_basquet_amounts.to_json %>];
   var not_paid_amounts_js = [<%= raw @not_paid_amounts.to_json %>];
   var paid_amount_js = [<%= raw @paid_amount.to_json %>];
 
-  console.log("meses:" + months_js);
   console.log("onBasket" + on_basquet_amounts_js);
   console.log("notPaid" + not_paid_amounts_js);
 
