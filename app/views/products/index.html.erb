@@ -31,7 +31,7 @@
 
         <tbody>
           <% @products.each do |product| %>
-            <tr onclick="location.href='<%= product_path(product) %>'">
+            <tr>
               <td class="clickeable"><%= link_to product.name, product %></td>
               <td class="clickeable"><%= product.category %></td>
               <td><%= number_to_currency(product.price, precision: 0, seperator: ",", delimiter: ".")%></td>
@@ -44,7 +44,8 @@
                   <%= link_to '<i class="fas fa-plus-circle fa-2x"></i>'.html_safe, buyer_orders_add_path(product: product.id), method: :post %></td>
                 <% end %>
               <% end %>
-              <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, product, method: :delete, data: { confirm: 'Are you sure?' },
+                    :remote => true, :class => 'delete_product' %></td>
             </tr>
           <% end %>
         </tbody>
@@ -95,8 +96,14 @@
 
                     <tr>
                       <td><%= order.product.name%></td>
-                      <td><%= order.quantity%></td>
                       <td>
+                          <%= link_to '<i class="fas fa-minus-circle fa-2x"></i>'.html_safe%>
+                          <%= order.quantity%>
+                          <i class="fas fa-plus-circle fa-2x"></i>
+                      </td>
+
+
+                    <td>
                           <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#<%=order.id %>" aria-expanded="false" aria-controls="collapseExample">
                             <%= number_to_currency(order.price, precision: 0, seperator: ",", delimiter: ".")%>
                           </button>
