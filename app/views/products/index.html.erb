@@ -37,8 +37,10 @@
               <td><%= number_to_currency(product.price, precision: 0, seperator: ",", delimiter: ".")%></td>
               <% if params[:buyer_id].present?%>
                 <% if product.basquet_quantity(@buyer) == 0  %>
-                  <td><%= link_to 'Agregar', buyer_orders_path(product: product.id), method: :post, class:"btn btn-outline-primary" %></td>
+                  <td><%= link_to 'Agregar', buyer_orders_path(product: product.id), method: :post, class:"btn btn-outline-primary",
+                    :remote => true, :class => 'add_product' %> %></td>
                 <% elsif product.basquet_quantity(@buyer) > 0  %>
+
                   <td><%= link_to '<i class="fas fa-minus-circle fa-2x"></i>'.html_safe, buyer_orders_substract_path(product: product.id), method: :post %>
                   <%= product.basquet_quantity(@buyer) %>
                   <%= link_to '<i class="fas fa-plus-circle fa-2x"></i>'.html_safe, buyer_orders_add_path(product: product.id), method: :post %></td>
@@ -110,7 +112,8 @@
                       </td>
                       <td><%= order.created_at.strftime(" %d-%m-%y ")%></td>
                       <td><%= number_to_currency(order.total_amount, precision: 0, seperator: ",", delimiter: ".")%></td>
-                      <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, order, method: :delete, data: { confirm: 'Seguro?' } %><td>
+                      <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, order, method: :delete, data: { confirm: 'Seguro?' },
+                              :remote => true, :class => 'delete_order' %></td>
                     <tr>
 
                     <tr>

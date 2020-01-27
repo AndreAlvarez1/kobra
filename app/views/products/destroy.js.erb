@@ -1,3 +1,7 @@
 $('.delete_product').bind('ajax:success', function() {
    $(this).closest('tr').fadeOut();
 });
+
+$('.delete_order').bind('ajax:success', function() {
+   $(this).closest('tr').fadeOut();
+});

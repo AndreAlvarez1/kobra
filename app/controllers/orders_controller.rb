@@ -48,12 +48,21 @@ class OrdersController < ApplicationController
   end
 
 
+  # def destroy
+  #   @order = Order.find(params[:id])
+  #   @order.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to request.referrer, notice: 'La orden fue eliminada con exito.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
+
   def destroy
-    @order = Order.find(params[:id])
     @order.destroy
     respond_to do |format|
       format.html { redirect_to request.referrer, notice: 'La orden fue eliminada con exito.' }
       format.json { head :no_content }
+      format.js   { render :layout => false }
     end
   end
 

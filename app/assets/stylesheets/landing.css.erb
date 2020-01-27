@@ -29,6 +29,8 @@
 
 .intro{
   background-image: url(<%= asset_data_uri 'fondo_intro_t.jpg' %>);
+  background-repeat:no-repeat;
+  background-size:cover;
   padding: 100px 20px;
 }
 
@@ -55,15 +57,24 @@ h3{
 
 .mano{
   background-image: url(<%= asset_data_uri 'mano.png' %>);
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat:no-repeat;
+  background-size:cover;
+
 }
 
 .cuentas{
-  height: 600px;
+  min-height: 300px;
 }
+
+.infoCuentas{
+  padding: 20px;
+  margin-top: 10%;
+}
+
+.almedio{
+  margin-top: 15%;
+}
+
 
 
 @media (min-width: 576px) {
@@ -75,9 +86,7 @@ h3{
     width:500px;
   }
 
-  .almedio{
-    margin-top:200px;
-  }
+
   .celulares h4{
     background-color: rgba(255, 0, 0, 0);
     display: block;
@@ -90,7 +99,9 @@ h3{
     margin-top:0px;
     text-align:left;
   }
-
+  .cuentas{
+    height: 600px;
+  }
 
 
 }
@@ -99,6 +110,10 @@ h3{
   .intro{
     background-image: url(<%= asset_data_uri 'fondo_intro.jpg' %>);
     padding: 250px 20px;
+  }
+
+  .almedio{
+    margin-top: 10%;
   }
 
 

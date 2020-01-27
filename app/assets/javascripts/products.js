@@ -1,13 +1,5 @@
 
 
-
-
-
-
-
-
-
-
 // DATATABLES
   document.addEventListener('turbolinks:before-cache', function(){
       $('#productsTable').DataTable().destroy();
