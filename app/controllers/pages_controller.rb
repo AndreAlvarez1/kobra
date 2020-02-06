@@ -7,6 +7,13 @@ class PagesController < ApplicationController
   def home
   end
 
+  def plans
+  end
+
+  def premium
+    @seller = current_seller
+  end
+
   def dashboard
     @seller = current_seller
     @buyer = Buyer.new

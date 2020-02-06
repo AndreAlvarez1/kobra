@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/index'
   get 'pages/dashboard'
+  get 'pages/plans'
+  get 'pages/premium'
   get 'pages/calendar'
   get 'pages/modal'
   get 'pages/success'
